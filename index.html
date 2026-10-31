@@ -32,23 +32,23 @@
             will-change: transform;
         }
 
-        /* Carrossel Infinito Estilo Daway Films (Suave, contínuo e sem paragens) */
+        /* Carrossel Infinito Suave (Estilo Daway Films) */
         .marquee-container {
             display: flex;
             overflow: hidden;
             width: 100%;
             position: relative;
             background: #0a0a0a;
-            padding: 1.5rem 0;
+            padding: 2rem 0;
             mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
             -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
         }
 
         .marquee-track {
             display: flex;
-            gap: 6rem;
+            gap: 8rem;
             width: max-content;
-            animation: scrollMarquee 25s linear infinite;
+            animation: scrollMarquee 20s linear infinite;
             align-items: center;
         }
 
@@ -61,17 +61,18 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* Limpeza total: sem caixas, fundo totalmente integrado */
-        .brand-item {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
+        /* Estilo limpo apenas para as logos */
+        .brand-logo {
+            height: 50px;
+            width: auto;
+            object-contain;
             opacity: 0.85;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
-        .brand-item:hover {
+        .brand-logo:hover {
             opacity: 1;
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -119,7 +120,7 @@
             </div>
         </section>
 
-        <!-- CARROSSEL INFINITO ESTILO DAWAY FILMS -->
+        <!-- CARROSSEL INFINITO APENAS COM AS LOGOS -->
         <section id="marcas" class="bg-[#0a0a0a] overflow-hidden border-y border-gray-900">
             <div class="pt-6 text-center">
                 <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase">Marcas em Destaque</p>
@@ -128,48 +129,24 @@
             <div class="marquee-container">
                 <div class="marquee-track">
                     <!-- Bloco 1 -->
-                    <div class="flex items-center gap-16 shrink-0">
-                        <div class="brand-item">
-                            <img src="sabores.png" alt="Sabores di Casa" class="h-12 sm:h-14 w-auto object-contain brightness-125">
-                            <span class="text-xl font-medium tracking-wide text-white">Sabores di Casa</span>
-                        </div>
-                        <div class="brand-item">
-                            <img src="mev.png" alt="MEV" class="h-10 sm:h-12 w-auto object-contain brightness-125">
-                            <span class="text-xl font-medium tracking-wide text-white">MEV</span>
-                        </div>
+                    <div class="flex items-center gap-20 shrink-0">
+                        <img src="sabores.png" alt="Sabores di Casa" class="brand-logo">
+                        <img src="mev.png" alt="MEV" class="brand-logo">
                     </div>
-                    <!-- Bloco 2 (Duplicado exato para fechar o loop infinito perfeito) -->
-                    <div class="flex items-center gap-16 shrink-0">
-                        <div class="brand-item">
-                            <img src="sabores.png" alt="Sabores di Casa" class="h-12 sm:h-14 w-auto object-contain brightness-125">
-                            <span class="text-xl font-medium tracking-wide text-white">Sabores di Casa</span>
-                        </div>
-                        <div class="brand-item">
-                            <img src="mev.png" alt="MEV" class="h-10 sm:h-12 w-auto object-contain brightness-125">
-                            <span class="text-xl font-medium tracking-wide text-white">MEV</span>
-                        </div>
+                    <!-- Bloco 2 (Duplicado exato para fechar o ciclo infinito perfeito) -->
+                    <div class="flex items-center gap-20 shrink-0">
+                        <img src="sabores.png" alt="Sabores di Casa" class="brand-logo">
+                        <img src="mev.png" alt="MEV" class="brand-logo">
                     </div>
                     <!-- Bloco 3 (Garante fluidez total em ecrãs largos) -->
-                    <div class="flex items-center gap-16 shrink-0">
-                        <div class="brand-item">
-                            <img src="sabores.png" alt="Sabores di Casa" class="h-12 sm:h-14 w-auto object-contain brightness-125">
-                            <span class="text-xl font-medium tracking-wide text-white">Sabores di Casa</span>
-                        </div>
-                        <div class="brand-item">
-                            <img src="mev.png" alt="MEV" class="h-10 sm:h-12 w-auto object-contain brightness-125">
-                            <span class="text-xl font-medium tracking-wide text-white">MEV</span>
-                        </div>
+                    <div class="flex items-center gap-20 shrink-0">
+                        <img src="sabores.png" alt="Sabores di Casa" class="brand-logo">
+                        <img src="mev.png" alt="MEV" class="brand-logo">
                     </div>
                     <!-- Bloco 4 -->
-                    <div class="flex items-center gap-16 shrink-0">
-                        <div class="brand-item">
-                            <img src="sabores.png" alt="Sabores di Casa" class="h-12 sm:h-14 w-auto object-contain brightness-125">
-                            <span class="text-xl font-medium tracking-wide text-white">Sabores di Casa</span>
-                        </div>
-                        <div class="brand-item">
-                            <img src="mev.png" alt="MEV" class="h-10 sm:h-12 w-auto object-contain brightness-125">
-                            <span class="text-xl font-medium tracking-wide text-white">MEV</span>
-                        </div>
+                    <div class="flex items-center gap-20 shrink-0">
+                        <img src="sabores.png" alt="Sabores di Casa" class="brand-logo">
+                        <img src="mev.png" alt="MEV" class="brand-logo">
                     </div>
                 </div>
             </div>
