@@ -32,9 +32,9 @@
             will-change: transform;
         }
 
-        /* Carrossel Infinito Fluido e Contínuo (Sem Paragens) */
+        /* Carrossel Infinito Fluido e Contínuo */
         .marquee-section {
-            background: #0a0a0a;
+            background: #050505;
             overflow: hidden;
             width: 100%;
             padding: 2.5rem 0;
@@ -56,13 +56,233 @@
 
         .marquee-section::before {
             left: 0;
-            background: linear-gradient(to right, #0a0a0a, transparent);
+            background: linear-gradient(to right, #050505, transparent);
         }
 
         .marquee-section::after {
             right: 0;
-            background: linear-gradient(to left, #0a0a0a, transparent);
+            background: linear-gradient(to left, #050505, transparent);
         }
 
         .marquee-track {
-            display
+            display: flex;
+            width: max-content;
+            animation: scrollLoop 15s linear infinite;
+        }
+
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollLoop {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .marquee-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            gap: 4rem;
+            min-width: 100%;
+            padding: 0 2rem;
+        }
+
+        .brand-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .brand-logo {
+            height: 36px;
+            width: auto;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="fixed w-full top-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-sm border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 sm:h-24 flex items-center justify-between">
+            <a href="#" class="flex items-center">
+                <img src="logo.png" alt="JHVISUALRP Logo" class="h-12 sm:h-16 md:h-20 w-auto object-contain">
+            </a>
+            <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-300">
+                <a href="#servicos" class="hover:text-white transition">Serviços</a>
+                <a href="#projetos" class="hover:text-white transition">Portfólio</a>
+                <a href="#marcas" class="hover:text-white transition">Marcas</a>
+                <a href="#contato" class="hover:text-white transition">Contato</a>
+            </nav>
+            <a href="https://wa.me/5516982055971" target="_blank" class="px-4 sm:px-5 py-2 sm:py-2.5 bg-white text-black text-xs sm:text-sm font-semibold rounded-full hover:bg-gray-200 transition">
+                Orçamento
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <main>
+        <section class="relative h-screen flex flex-col justify-center px-4 sm:px-6 pt-20 overflow-hidden">
+            <div class="absolute inset-0 bg-3d-motion z-0"></div>
+
+            <div class="max-w-7xl mx-auto w-full z-10 relative">
+                <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-4 sm:mb-6">
+                    Fotografia & Vídeo <br class="hidden sm:block">
+                    <span class="text-gray-400">em Ribeirão Preto.</span>
+                </h1>
+                <p class="text-base sm:text-xl text-gray-300 mb-8 sm:mb-10 max-w-xl sm:max-w-2xl font-light">
+                    O caminho da sua marca começa aqui. Unimos a essência de projetos incríveis a imagens cinematográficas que convertem.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
+                    <a href="https://wa.me/5516982055971" target="_blank" class="px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-black text-center text-sm sm:text-base font-semibold rounded-full hover:bg-gray-200 transition shadow-lg">
+                        Pedir um orçamento
+                    </a>
+                    <a href="#projetos" class="px-6 sm:px-8 py-3.5 sm:py-4 bg-transparent border border-gray-600 text-white text-center text-sm sm:text-base font-semibold rounded-full hover:border-white transition">
+                        Ver portfólio
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVIÇOS -->
+        <section id="servicos" class="py-20 sm:py-24 px-4 sm:px-6 bg-[#0a0a0a]">
+            <div class="max-w-7xl mx-auto">
+                <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3"><span class="mr-2">01</span> O que fazemos</p>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 sm:mb-16">Audiovisual para o que a sua marca precisa.</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8 sm:gap-12 max-w-4xl">
+                    <article class="border-t border-gray-800 pt-6 sm:pt-8">
+                        <span class="text-gray-600 text-sm font-bold block mb-4">01</span>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Fotografia Comercial e Retratos</h3>
+                        <p class="text-gray-400 text-sm sm:text-base mb-6">Ensaios fotográficos e imagens de produtos que valorizam detalhes, texturas e cores para o seu negócio.</p>
+                    </article>
+                    <article class="border-t border-gray-800 pt-6 sm:pt-8">
+                        <span class="text-gray-600 text-sm font-bold block mb-4">02</span>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Produção de Vídeo e Reels</h3>
+                        <p class="text-gray-400 text-sm sm:text-base mb-6">Conteúdo dinâmico em vídeo para redes sociais e institucionais com padrão cinematográfico.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTFÓLIO -->
+        <section id="projetos" class="py-20 sm:py-24 px-4 sm:px-6 bg-[#050505]">
+            <div class="max-w-7xl mx-auto">
+                <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3"><span class="mr-2">02</span> Portfólio</p>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 sm:mb-16">Últimos Trabalhos.</h2>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
+                    <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
+                        <img src="imagem.jpg" alt="Portfólio" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
+                        <img src="imagem1.jpg" alt="Portfólio" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
+                        <img src="imagem2.jpg" alt="Portfólio" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
+                        <img src="imagem3.jpg" alt="Portfólio" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
+                        <img src="imagem4.jpg" alt="Portfólio" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
+                        <img src="menina.jpg" alt="Portfólio" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                    </div>
+                </div>
+
+                <div class="mt-10 sm:mt-12 text-center">
+                    <a href="https://instagram.com/jhvisualrp" target="_blank" class="inline-block px-6 sm:px-8 py-3.5 sm:py-4 bg-transparent border border-gray-600 text-white text-sm sm:text-base font-semibold rounded-full hover:border-white transition">
+                        Ver mais no Instagram
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CARROSSEL DE MARCAS (AGORA LOGO ABAIXO DO PORTFÓLIO) -->
+        <section id="marcas" class="marquee-section">
+            <div class="max-w-7xl mx-auto px-4 mb-4 text-center">
+                <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase">Marcas em Destaque</p>
+            </div>
+            
+            <div class="marquee-track">
+                <!-- Grupo 1 -->
+                <div class="marquee-group">
+                    <div class="brand-item">
+                        <img src="sabores.png" alt="Sabores di Casa" class="brand-logo">
+                        <span class="text-sm sm:text-base font-bold tracking-wide text-white">Sabores di Casa</span>
+                    </div>
+                    <div class="brand-item">
+                        <img src="mev.png" alt="MEV" class="brand-logo">
+                        <span class="text-sm sm:text-base font-bold tracking-wide text-white">MEV</span>
+                    </div>
+                </div>
+                <!-- Grupo 2 (Cópia exata para garantir o loop infinito contínuo) -->
+                <div class="marquee-group" aria-hidden="true">
+                    <div class="brand-item">
+                        <img src="sabores.png" alt="Sabores di Casa" class="brand-logo">
+                        <span class="text-sm sm:text-base font-bold tracking-wide text-white">Sabores di Casa</span>
+                    </div>
+                    <div class="brand-item">
+                        <img src="mev.png" alt="MEV" class="brand-logo">
+                        <span class="text-sm sm:text-base font-bold tracking-wide text-white">MEV</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SUPABASE OCULTO -->
+        <section class="hidden py-12 px-6 bg-gray-900 border-y border-gray-800">
+            <div class="max-w-7xl mx-auto">
+                <h3 class="text-lg font-bold mb-2">Supabase</h3>
+                <ul id="lista-mensagens" class="text-green-400 text-sm">A carregar...</ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer id="contato" class="bg-[#050505] py-12 sm:py-16 px-4 sm:px-6 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
+            <div>
+                <img src="logo.png" alt="JHVISUALRP Logo" class="h-16 sm:h-20 w-auto object-contain mb-6">
+                <p class="text-gray-400 text-sm sm:text-base max-w-sm">O meu foco é criar projetos autênticos a partir do zero, focados exatamente no que você precisa comunicar.</p>
+            </div>
+            <div>
+                <h3 class="font-bold mb-4 text-white">Contato</h3>
+                <div class="flex flex-col gap-2 text-gray-400 text-sm sm:text-base">
+                    <a href="https://instagram.com/jhvisualrp" target="_blank" class="hover:text-white">Instagram: @jhvisualrp</a>
+                    <a href="mailto:contato@jhvisualrp.com.br" class="hover:text-white">Email: contato@jhvisualrp.com.br</a>
+                    <a href="https://wa.me/5516982055971" target="_blank" class="hover:text-white">WhatsApp: (16) 98205-5971</a>
+                    <p class="mt-2 text-sm">Ribeirão Preto, SP</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT SUPABASE -->
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const lista = document.getElementById('lista-mensagens');
+            const supabaseUrl = 'https://qeykaxyclbknshzhykyo.supabase.co';
+            const supabaseKey = 'sb_publishable_U9rAFsAiHONYvWFIbzftsQ_mB1LeBv8';
+
+            try {
+                const dbClient = supabase.createClient(supabaseUrl, supabaseKey);
+                const { data, error } = await dbClient.from('mensagens').select('*');
+                if (error) return;
+                if (data && data.length > 0) {
+                    console.log("Supabase conectado com sucesso!");
+                }
+            } catch (erro) {
+                console.error("Erro Supabase:", erro);
+            }
+        });
+    </script>
+</body>
+</html>
