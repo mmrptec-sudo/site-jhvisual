@@ -6,7 +6,7 @@
     <title>JHVISUALRP | Fotografia e Vídeo</title>
     
     <!-- FAVICON -->
-    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="icon" type="image/png" href="mev.png">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,7 +17,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #f3f4f6; }
         
-        /* Efeito 3D de profundidade e movimento contínuo só na camada de fundo */
+        /* Efeito 3D de profundidade e movimento contínuo no fundo */
         @keyframes float3D {
             0% { transform: scale(1) translate(0px, 0px) rotate(0deg); }
             33% { transform: scale(1.08) translate(-15px, -10px) rotate(1deg); }
@@ -31,6 +31,27 @@
             animation: float3D 25s infinite ease-in-out;
             will-change: transform;
         }
+
+        /* Animação do carrossel infinito a passar em fila */
+        @keyframes scrollMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: scrollMarquee 20s linear infinite;
+        }
+
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        .logo-transparent {
+            mix-blend-mode: screen;
+            filter: contrast(120%) brightness(1.1);
+        }
     </style>
 </head>
 <body>
@@ -39,11 +60,11 @@
     <header class="fixed w-full top-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-sm border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 sm:h-24 flex items-center justify-between">
             <a href="#" class="flex items-center">
-                <img src="logo.png" alt="JHVISUALRP Logo" class="h-12 sm:h-16 md:h-20 w-auto object-contain brightness-125 filter">
+                <img src="mev.png" alt="MEV Logo" class="h-10 sm:h-14 w-auto object-contain logo-transparent">
             </a>
             <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-300">
+                <a href="#marcas" class="hover:text-white transition">Marcas</a>
                 <a href="#servicos" class="hover:text-white transition">Serviços</a>
-                <a href="#processo" class="hover:text-white transition">Como Trabalho</a>
                 <a href="#projetos" class="hover:text-white transition">Portfólio</a>
                 <a href="#contato" class="hover:text-white transition">Contato</a>
             </nav>
@@ -53,101 +74,120 @@
         </div>
     </header>
 
-    <!-- HERO SECTION: Fundo 3D em movimento e Título Estático -->
+    <!-- HERO SECTION -->
     <main>
         <section class="relative h-screen flex flex-col justify-center px-4 sm:px-6 pt-20 overflow-hidden">
             <div class="absolute inset-0 bg-3d-motion z-0"></div>
 
             <div class="max-w-7xl mx-auto w-full z-10 relative">
                 <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-4 sm:mb-6">
-                    Fotografia <br class="hidden sm:block">
+                    Fotografia & Vídeo <br class="hidden sm:block">
                     <span class="text-gray-400">em Ribeirão Preto.</span>
                 </h1>
                 <p class="text-base sm:text-xl text-gray-300 mb-8 sm:mb-10 max-w-xl sm:max-w-2xl font-light">
-                    O caminho da sua marca começa aqui. Transformo ideias em imagens cinematográficas e fotografias que conectam e convertem.
+                    O caminho da sua marca começa aqui. Unimos a essência de projetos incríveis a imagens cinematográficas que convertem.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
                     <a href="https://wa.me/5516982055971" target="_blank" class="px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-black text-center text-sm sm:text-base font-semibold rounded-full hover:bg-gray-200 transition shadow-lg">
                         Pedir um orçamento
                     </a>
-                    <a href="#servicos" class="px-6 sm:px-8 py-3.5 sm:py-4 bg-transparent border border-gray-600 text-white text-center text-sm sm:text-base font-semibold rounded-full hover:border-white transition">
-                        Conhecer serviços
+                    <a href="#marcas" class="px-6 sm:px-8 py-3.5 sm:py-4 bg-transparent border border-gray-600 text-white text-center text-sm sm:text-base font-semibold rounded-full hover:border-white transition">
+                        Ver marcas parceiras
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- SERVIÇOS (Ajustado com 2 colunas: Fotografia e Vídeo) -->
+        <!-- CARROSSEL CONTÍNUO DE MARCAS (Sabores di Casa e MEV em movimento) -->
+        <section id="marcas" class="py-16 bg-[#0e0e0e] border-y border-gray-900 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 mb-8 text-center">
+                <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase">Marcas em Destaque</p>
+            </div>
+            
+            <div class="relative w-full overflow-hidden whitespace-nowrap">
+                <div class="marquee-track flex gap-8 items-center">
+                    <!-- Sequência 1 -->
+                    <div class="flex items-center gap-8">
+                        <div class="flex items-center gap-4 bg-[#141414] px-8 py-5 rounded-2xl border border-gray-800 shadow-xl min-w-[280px] justify-center">
+                            <img src="sabores.png" alt="Sabores di Casa" class="h-12 w-auto object-contain logo-transparent">
+                            <span class="text-lg font-bold tracking-wide text-white">Sabores di Casa</span>
+                        </div>
+                        <div class="flex items-center gap-4 bg-[#141414] px-8 py-5 rounded-2xl border border-gray-800 shadow-xl min-w-[280px] justify-center">
+                            <img src="mev.png" alt="MEV" class="h-10 w-auto object-contain logo-transparent">
+                            <span class="text-lg font-bold tracking-wide text-white">MEV Visual</span>
+                        </div>
+                    </div>
+                    <!-- Sequência 2 (Duplicada para looping infinito perfeito) -->
+                    <div class="flex items-center gap-8">
+                        <div class="flex items-center gap-4 bg-[#141414] px-8 py-5 rounded-2xl border border-gray-800 shadow-xl min-w-[280px] justify-center">
+                            <img src="sabores.png" alt="Sabores di Casa" class="h-12 w-auto object-contain logo-transparent">
+                            <span class="text-lg font-bold tracking-wide text-white">Sabores di Casa</span>
+                        </div>
+                        <div class="flex items-center gap-4 bg-[#141414] px-8 py-5 rounded-2xl border border-gray-800 shadow-xl min-w-[280px] justify-center">
+                            <img src="mev.png" alt="MEV" class="h-10 w-auto object-contain logo-transparent">
+                            <span class="text-lg font-bold tracking-wide text-white">MEV Visual</span>
+                        </div>
+                    </div>
+                    <!-- Sequência 3 (Garante fluidez em telas largas) -->
+                    <div class="flex items-center gap-8">
+                        <div class="flex items-center gap-4 bg-[#141414] px-8 py-5 rounded-2xl border border-gray-800 shadow-xl min-w-[280px] justify-center">
+                            <img src="sabores.png" alt="Sabores di Casa" class="h-12 w-auto object-contain logo-transparent">
+                            <span class="text-lg font-bold tracking-wide text-white">Sabores di Casa</span>
+                        </div>
+                        <div class="flex items-center gap-4 bg-[#141414] px-8 py-5 rounded-2xl border border-gray-800 shadow-xl min-w-[280px] justify-center">
+                            <img src="mev.png" alt="MEV" class="h-10 w-auto object-contain logo-transparent">
+                            <span class="text-lg font-bold tracking-wide text-white">MEV Visual</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVIÇOS -->
         <section id="servicos" class="py-20 sm:py-24 px-4 sm:px-6 bg-[#0a0a0a]">
             <div class="max-w-7xl mx-auto">
-                <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3"><span class="mr-2">01</span> O que eu faço</p>
+                <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3"><span class="mr-2">01</span> O que fazemos</p>
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 sm:mb-16">Audiovisual para o que a sua marca precisa.</h2>
                 
                 <div class="grid md:grid-cols-2 gap-8 sm:gap-12 max-w-4xl">
-                    <!-- Serviço 1: Fotografia -->
                     <article class="border-t border-gray-800 pt-6 sm:pt-8">
                         <span class="text-gray-600 text-sm font-bold block mb-4">01</span>
                         <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Fotografia Comercial e Retratos</h3>
-                        <p class="text-gray-400 text-sm sm:text-base mb-6">Ensaios fotográficos e imagens de produtos que valorizam detalhes, texturas e cores. Fotografia profissional para posicionamento de marca e autoridade.</p>
+                        <p class="text-gray-400 text-sm sm:text-base mb-6">Ensaios fotográficos e imagens de produtos que valorizam detalhes, texturas e cores para o seu negócio.</p>
                     </article>
-                    
-                    <!-- Serviço 2: Vídeo -->
                     <article class="border-t border-gray-800 pt-6 sm:pt-8">
                         <span class="text-gray-600 text-sm font-bold block mb-4">02</span>
                         <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Produção de Vídeo e Reels</h3>
-                        <p class="text-gray-400 text-sm sm:text-base mb-6">Conteúdo dinâmico em vídeo para redes sociais e institucionais. Do roteiro e direção à captação e edição final com padrão cinematográfico.</p>
+                        <p class="text-gray-400 text-sm sm:text-base mb-6">Conteúdo dinâmico em vídeo para redes sociais e institucionais com padrão cinematográfico.</p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- PROCESSO -->
-        <section id="processo" class="py-20 sm:py-24 px-4 sm:px-6 bg-[#111]">
-            <div class="max-w-7xl mx-auto">
-                <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3"><span class="mr-2">02</span> Como eu trabalho</p>
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 sm:mb-16">Do briefing à entrega.</h2>
-                
-                <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
-                    <div class="bg-[#1a1a1a] p-6 sm:p-8 rounded-2xl">
-                        <h3 class="text-lg sm:text-xl font-bold text-white mb-2">1. Briefing</h3>
-                        <p class="text-gray-400 text-sm sm:text-base">Entendo a sua marca, o que você vende e para quem. A partir daí, traçamos a rota do projeto.</p>
-                    </div>
-                    <div class="bg-[#1a1a1a] p-6 sm:p-8 rounded-2xl">
-                        <h3 class="text-lg sm:text-xl font-bold text-white mb-2">2. Produção</h3>
-                        <p class="text-gray-400 text-sm sm:text-base">Roteiro, captação e direção. Cada detalhe é pensado antes de eu ligar a câmera.</p>
-                    </div>
-                    <div class="bg-[#1a1a1a] p-6 sm:p-8 rounded-2xl">
-                        <h3 class="text-lg sm:text-xl font-bold text-white mb-2">3. Entrega</h3>
-                        <p class="text-gray-400 text-sm sm:text-base">Edição, tratamento de cor e finalização. Você recebe o material pronto com alta qualidade.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PROJETOS (PORTFÓLIO) -->
+        <!-- PORTFÓLIO -->
         <section id="projetos" class="py-20 sm:py-24 px-4 sm:px-6 bg-[#050505]">
             <div class="max-w-7xl mx-auto">
-                <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3"><span class="mr-2">03</span> Portfólio</p>
+                <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3"><span class="mr-2">02</span> Portfólio</p>
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 sm:mb-16">Últimos Trabalhos.</h2>
                 
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
                     <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
-                        <img src="imagem.jpg" alt="Portfólio JHVISUALRP" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                        <img src="imagem.jpg" alt="Portfólio" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
                     <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
-                        <img src="imagem1.jpg" alt="Portfólio JHVISUALRP" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                        <img src="imagem1.jpg" alt="Portfólio" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
                     <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
-                        <img src="imagem2.jpg" alt="Portfólio JHVISUALRP" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                        <img src="imagem2.jpg" alt="Portfólio" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
                     <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
-                        <img src="imagem3.jpg" alt="Portfólio JHVISUALRP" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                        <img src="imagem3.jpg" alt="Portfólio" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
                     <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
-                        <img src="imagem4.jpg" alt="Portfólio JHVISUALRP" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                        <img src="imagem4.jpg" alt="Portfólio" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
                     <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
-                        <img src="menina.jpg" alt="Portfólio JHVISUALRP" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                        <img src="menina.jpg" alt="Portfólio" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
                 </div>
 
@@ -159,10 +199,10 @@
             </div>
         </section>
 
-        <!-- TESTE SUPABASE OCULTO -->
+        <!-- SUPABASE OCULTO -->
         <section class="hidden py-12 px-6 bg-gray-900 border-y border-gray-800">
             <div class="max-w-7xl mx-auto">
-                <h3 class="text-lg font-bold mb-2">Painel de Teste (Supabase)</h3>
+                <h3 class="text-lg font-bold mb-2">Supabase</h3>
                 <ul id="lista-mensagens" class="text-green-400 text-sm">A carregar...</ul>
             </div>
         </section>
@@ -172,7 +212,7 @@
     <footer id="contato" class="bg-[#050505] py-12 sm:py-16 px-4 sm:px-6 border-t border-gray-900">
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
             <div>
-                <img src="logo.png" alt="JHVISUALRP Logo" class="h-16 sm:h-20 w-auto object-contain brightness-125 filter mb-6">
+                <img src="mev.png" alt="MEV Logo" class="h-16 sm:h-20 w-auto object-contain logo-transparent mb-6">
                 <p class="text-gray-400 text-sm sm:text-base max-w-sm">O meu foco é criar projetos autênticos a partir do zero, focados exatamente no que você precisa comunicar.</p>
             </div>
             <div>
