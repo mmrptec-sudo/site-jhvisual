@@ -32,40 +32,65 @@
             will-change: transform;
         }
 
-        /* Carrossel Infinito Suave (Estilo Daway Films) */
-        .marquee-container {
-            display: flex;
+        /* Carrossel Infinito Perfeito e Contínuo */
+        .marquee-section {
+            background: #0a0a0a;
             overflow: hidden;
             width: 100%;
+            padding: 2.5rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             position: relative;
-            background: #0a0a0a;
-            padding: 2rem 0;
-            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        }
+
+        .marquee-section::before,
+        .marquee-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 100px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .marquee-section::before {
+            left: 0;
+            background: linear-gradient(to right, #0a0a0a, transparent);
+        }
+
+        .marquee-section::after {
+            right: 0;
+            background: linear-gradient(to left, #0a0a0a, transparent);
         }
 
         .marquee-track {
             display: flex;
-            gap: 8rem;
             width: max-content;
-            animation: scrollMarquee 20s linear infinite;
-            align-items: center;
+            animation: scrollLoop 15s linear infinite;
         }
 
-        .marquee-container:hover .marquee-track {
+        .marquee-track:hover {
             animation-play-state: paused;
         }
 
-        @keyframes scrollMarquee {
+        @keyframes scrollLoop {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
-        /* Estilo limpo apenas para as logos */
+        .marquee-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            gap: 8rem;
+            min-width: 100%;
+        }
+
         .brand-logo {
-            height: 50px;
+            height: 48px;
             width: auto;
-            object-contain;
+            object-fit: contain;
             opacity: 0.85;
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
@@ -120,34 +145,22 @@
             </div>
         </section>
 
-        <!-- CARROSSEL INFINITO APENAS COM AS LOGOS -->
-        <section id="marcas" class="bg-[#0a0a0a] overflow-hidden border-y border-gray-900">
-            <div class="pt-6 text-center">
+        <!-- CARROSSEL INFINITO VERDADEIRO E FLUIDO -->
+        <section id="marcas" class="marquee-section">
+            <div class="max-w-7xl mx-auto px-4 mb-4 text-center">
                 <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase">Marcas em Destaque</p>
             </div>
             
-            <div class="marquee-container">
-                <div class="marquee-track">
-                    <!-- Bloco 1 -->
-                    <div class="flex items-center gap-20 shrink-0">
-                        <img src="sabores.png" alt="Sabores di Casa" class="brand-logo">
-                        <img src="mev.png" alt="MEV" class="brand-logo">
-                    </div>
-                    <!-- Bloco 2 (Duplicado exato para fechar o ciclo infinito perfeito) -->
-                    <div class="flex items-center gap-20 shrink-0">
-                        <img src="sabores.png" alt="Sabores di Casa" class="brand-logo">
-                        <img src="mev.png" alt="MEV" class="brand-logo">
-                    </div>
-                    <!-- Bloco 3 (Garante fluidez total em ecrãs largos) -->
-                    <div class="flex items-center gap-20 shrink-0">
-                        <img src="sabores.png" alt="Sabores di Casa" class="brand-logo">
-                        <img src="mev.png" alt="MEV" class="brand-logo">
-                    </div>
-                    <!-- Bloco 4 -->
-                    <div class="flex items-center gap-20 shrink-0">
-                        <img src="sabores.png" alt="Sabores di Casa" class="brand-logo">
-                        <img src="mev.png" alt="MEV" class="brand-logo">
-                    </div>
+            <div class="marquee-track">
+                <!-- Grupo 1 -->
+                <div class="marquee-group">
+                    <img src="sabores.png" alt="Sabores di Casa" class="brand-logo">
+                    <img src="mev.png" alt="MEV" class="brand-logo">
+                </div>
+                <!-- Grupo 2 (Cópia exata para criar o loop contínuo sem saltos) -->
+                <div class="marquee-group" aria-hidden="true">
+                    <img src="sabores.png" alt="Sabores di Casa" class="brand-logo">
+                    <img src="mev.png" alt="MEV" class="brand-logo">
                 </div>
             </div>
         </section>
