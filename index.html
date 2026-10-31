@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JHVISUALRP | Produtora Audiovisual</title>
+    <!-- Importa o Tailwind CSS para o visual moderno -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Importa o Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #f3f4f6; }
+        
+        /* Fundo da primeira dobra simulando um estúdio/câmera */
+        .hero-bg {
+            background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.9)), 
+                        url('https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=2071&auto=format&fit=crop') no-repeat center center/cover;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="fixed w-full top-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-sm border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="text-2xl font-bold tracking-tighter text-white">JHVISUAL<span class="text-gray-500">RP</span></a>
+            <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-300">
+                <a href="#servicos" class="hover:text-white transition">Serviços</a>
+                <a href="#projetos" class="hover:text-white transition">Projetos</a>
+                <a href="#sobre" class="hover:text-white transition">Quem Somos</a>
+                <a href="#contato" class="hover:text-white transition">Contato</a>
+            </nav>
+            <a href="#contato" class="px-5 py-2.5 bg-white text-black text-sm font-semibold rounded-full hover:bg-gray-200 transition">
+                Orçamento
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION (Início) -->
+    <main>
+        <section class="hero-bg h-screen flex flex-col justify-center px-6 pt-20">
+            <div class="max-w-7xl mx-auto w-full">
+                <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-6">
+                    Produtora audiovisual <br>
+                    <span class="text-gray-500">em Ribeirão Preto.</span>
+                </h1>
+                <p class="text-xl text-gray-400 mb-10 max-w-2xl">
+                    O caminho da sua marca começa aqui. Transformamos ideias em imagens cinematográficas que conectam e convertem.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contato" class="px-8 py-4 bg-white text-black text-center font-semibold rounded-full hover:bg-gray-200 transition">
+                        Pedir um orçamento
+                    </a>
+                    <a href="#servicos" class="px-8 py-4 bg-transparent border border-gray-600 text-white text-center font-semibold rounded-full hover:border-gray-400 transition">
+                        Conhecer serviços
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVIÇOS (O que fazemos) -->
+        <section id="servicos" class="py-24 px-6 bg-[#0a0a0a]">
+            <div class="max-w-7xl mx-auto">
+                <p class="text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3"><span class="mr-2">01</span> O que a gente faz</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-16">Vídeos para o que sua marca precisa.</h2>
+                
+                <div class="grid md:grid-cols-3 gap-12">
+                    <article class="border-t border-gray-800 pt-8">
+                        <span class="text-gray-600 text-sm font-bold block mb-4">01</span>
+                        <h3 class="text-2xl font-bold mb-4">Reels para Redes Sociais</h3>
+                        <p class="text-gray-400 mb-6">Conteúdo em vídeo para apresentar seu trabalho e conversar com seu público. A gente prepara o roteiro, dirige a gravação e entrega os Reels editados.</p>
+                    </article>
+                    <article class="border-t border-gray-800 pt-8">
+                        <span class="text-gray-600 text-sm font-bold block mb-4">02</span>
+                        <h3 class="text-2xl font-bold mb-4">Vídeos Institucionais</h3>
+                        <p class="text-gray-400 mb-6">Para apresentar sua empresa e sua equipe. Do roteiro à finalização, cada etapa parte da mensagem que sua marca precisa comunicar.</p>
+                    </article>
+                    <article class="border-t border-gray-800 pt-8">
+                        <span class="text-gray-600 text-sm font-bold block mb-4">03</span>
+                        <h3 class="text-2xl font-bold mb-4">Produto e Gastronomia</h3>
+                        <p class="text-gray-400 mb-6">Vídeos que mostram os detalhes do que você oferece: textura, movimento, preparo e experiência.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROCESSO (Como trabalhamos) -->
+        <section class="py-24 px-6 bg-[#111]">
+            <div class="max-w-7xl mx-auto">
+                <p class="text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3"><span class="mr-2">02</span> Como trabalhamos</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-16">Do briefing à entrega.</h2>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-[#1a1a1a] p-8 rounded-2xl">
+                        <h3 class="text-xl font-bold text-white mb-2">1. Briefing</h3>
+                        <p class="text-gray-400">Entendemos sua marca, o que você vende e pra quem. A partir daí, traçamos a rota.</p>
+                    </div>
+                    <div class="bg-[#1a1a1a] p-8 rounded-2xl">
+                        <h3 class="text-xl font-bold text-white mb-2">2. Produção</h3>
+                        <p class="text-gray-400">Roteiro, captação e direção. Cada detalhe pensado antes de ligar a câmera.</p>
+                    </div>
+                    <div class="bg-[#1a1a1a] p-8 rounded-2xl">
+                        <h3 class="text-xl font-bold text-white mb-2">3. Entrega</h3>
+                        <p class="text-gray-400">Edição, cor e finalização. Você recebe o vídeo pronto com alta qualidade cinematográfica.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTE SUPABASE (Deixei oculto visualmente no final, mas funcional para seu painel) -->
+        <section class="py-12 px-6 bg-gray-900 border-y border-gray-800">
+            <div class="max-w-7xl mx-auto">
+                <h3 class="text-lg font-bold mb-2">Painel de Teste (Supabase)</h3>
+                <p class="text-sm text-gray-400 mb-4">Status de conexão com o banco de dados:</p>
+                <ul id="lista-mensagens" class="text-green-400 text-sm">Carregando...</ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer id="contato" class="bg-[#050505] py-16 px-6 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
+            <div>
+                <h2 class="text-3xl font-bold mb-6">JHVISUALRP</h2>
+                <p class="text-gray-400 max-w-sm mb-6">A diferença é que aqui cada projeto começa do zero, focado no que você precisa comunicar.</p>
+            </div>
+            <div>
+                <h3 class="font-bold mb-4">Contato</h3>
+                <div class="flex flex-col gap-2 text-gray-400">
+                    <a href="#" class="hover:text-white">Instagram: @jhvisualrp</a>
+                    <a href="#" class="hover:text-white">Email: contato@jhvisualrp.com.br</a>
+                    <a href="#" class="hover:text-white">WhatsApp: (16) 90000-0000</a>
+                    <p class="mt-4">Ribeirão Preto, SP</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT DE CONEXÃO DO SUPABASE -->
+    <script>
+        // COLE SUAS CHAVES AQUI NOVAMENTE
+        const supabaseUrl = 'COLE_SUA_PROJECT_URL_AQUI';
+        const supabaseKey = 'COLE_SUA_CHAVE_ANON_AQUI';
+        
+        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+        async function carregarDados() {
+            const { data, error } = await supabase.from('mensagens').select('*');
+            const lista = document.getElementById('lista-mensagens');
+            lista.innerHTML = ''; 
+
+            if (error) {
+                lista.innerHTML = '<li class="text-red-500">Erro ao conectar com o banco. Verifique as chaves.</li>';
+                return;
+            }
+
+            data.forEach(msg => {
+                const item = document.createElement('li');
+                item.textContent = "✓ " + msg.texto;
+                lista.appendChild(item);
+            });
+        }
+
+        // Se você já tem a URL e a Chave, descomente a linha abaixo para executar
+        // carregarDados();
+    </script>
+</body>
+</html>
