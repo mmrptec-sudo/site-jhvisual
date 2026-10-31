@@ -6,7 +6,7 @@
     <title>JHVISUALRP | Fotografia e Vídeo</title>
     
     <!-- FAVICON -->
-    <link rel="icon" type="image/png" href="mev.png">
+    <link rel="icon" type="image/png" href="logo.png">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,7 +17,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #f3f4f6; }
         
-        /* Efeito 3D de profundidade e movimento contínuo no fundo */
+        <!-- Efeito 3D de profundidade e movimento contínuo no fundo -->
         @keyframes float3D {
             0% { transform: scale(1) translate(0px, 0px) rotate(0deg); }
             33% { transform: scale(1.08) translate(-15px, -10px) rotate(1deg); }
@@ -32,7 +32,7 @@
             will-change: transform;
         }
 
-        /* Animação do carrossel infinito a passar em fila */
+        <!-- Animação do carrossel infinito a passar em fila -->
         @keyframes scrollMarquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
@@ -50,17 +50,17 @@
 
         .logo-transparent {
             mix-blend-mode: screen;
-            filter: contrast(120%) brightness(1.1);
+            filter: contrast(120%) brightness(1.2);
         }
     </style>
 </head>
 <body>
 
-    <!-- CABEÇALHO -->
+    <!-- CABEÇALHO COM A LOGO GARANTIDA -->
     <header class="fixed w-full top-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-sm border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 sm:h-24 flex items-center justify-between">
             <a href="#" class="flex items-center">
-                <img src="mev.png" alt="MEV Logo" class="h-10 sm:h-14 w-auto object-contain logo-transparent">
+                <img src="logo.png" alt="JHVISUALRP Logo" class="h-12 sm:h-16 md:h-20 w-auto object-contain logo-transparent">
             </a>
             <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-300">
                 <a href="#marcas" class="hover:text-white transition">Marcas</a>
@@ -98,7 +98,7 @@
             </div>
         </section>
 
-        <!-- CARROSSEL CONTÍNUO DE MARCAS (Sabores di Casa e MEV em movimento) -->
+        <!-- CARROSSEL CONTÍNUO DE MARCAS -->
         <section id="marcas" class="py-16 bg-[#0e0e0e] border-y border-gray-900 overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 mb-8 text-center">
                 <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase">Marcas em Destaque</p>
@@ -117,7 +117,7 @@
                             <span class="text-lg font-bold tracking-wide text-white">MEV Visual</span>
                         </div>
                     </div>
-                    <!-- Sequência 2 (Duplicada para looping infinito perfeito) -->
+                    <!-- Sequência 2 (Looping infinito) -->
                     <div class="flex items-center gap-8">
                         <div class="flex items-center gap-4 bg-[#141414] px-8 py-5 rounded-2xl border border-gray-800 shadow-xl min-w-[280px] justify-center">
                             <img src="sabores.png" alt="Sabores di Casa" class="h-12 w-auto object-contain logo-transparent">
@@ -128,7 +128,7 @@
                             <span class="text-lg font-bold tracking-wide text-white">MEV Visual</span>
                         </div>
                     </div>
-                    <!-- Sequência 3 (Garante fluidez em telas largas) -->
+                    <!-- Sequência 3 -->
                     <div class="flex items-center gap-8">
                         <div class="flex items-center gap-4 bg-[#141414] px-8 py-5 rounded-2xl border border-gray-800 shadow-xl min-w-[280px] justify-center">
                             <img src="sabores.png" alt="Sabores di Casa" class="h-12 w-auto object-contain logo-transparent">
@@ -212,7 +212,7 @@
     <footer id="contato" class="bg-[#050505] py-12 sm:py-16 px-4 sm:px-6 border-t border-gray-900">
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
             <div>
-                <img src="mev.png" alt="MEV Logo" class="h-16 sm:h-20 w-auto object-contain logo-transparent mb-6">
+                <img src="logo.png" alt="JHVISUALRP Logo" class="h-16 sm:h-20 w-auto object-contain logo-transparent mb-6">
                 <p class="text-gray-400 text-sm sm:text-base max-w-sm">O meu foco é criar projetos autênticos a partir do zero, focados exatamente no que você precisa comunicar.</p>
             </div>
             <div>
