@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #f3f4f6; }
         
         /* Efeito 3D de profundidade e movimento contínuo no fundo da Hero */
@@ -125,7 +125,7 @@
     </header>
 
     <main>
-        <!-- HERO SECTION ORIGINAL COM FUNDO 3D E BOTÕES NO TOPO -->
+        <!-- HERO SECTION -->
         <section class="relative h-screen flex flex-col justify-center px-4 sm:px-6 pt-20 overflow-hidden">
             <div class="absolute inset-0 bg-3d-motion z-0"></div>
 
@@ -148,24 +148,21 @@
             </div>
         </section>
 
-        <!-- SECÇÃO DOS 3 VÍDEOS EM DESTAQUE LOGO ABAIXO -->
-        <section id="videos" class="py-20 sm:py-24 px-4 sm:px-6 bg-[#0a0a0a]">
+        <!-- SECÇÃO DE VÍDEOS EM DESTAQUE -->
+        <section id="videos" class="py-24 sm:py-32 px-4 sm:px-6 bg-[#0a0a0a]">
             <div class="max-w-7xl mx-auto">
-                <div class="mb-12">
+                <div class="mb-14">
                     <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3">Destaque em Vídeo</p>
                     <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold">Produção Audiovisual Cinematográfica.</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Vídeo 1 -->
                     <div class="relative overflow-hidden rounded-2xl aspect-[9/16] bg-[#111] shadow-2xl group">
                         <video src="video1.mp4.mp4" autoplay muted loop playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"></video>
                     </div>
-                    <!-- Vídeo 2 -->
                     <div class="relative overflow-hidden rounded-2xl aspect-[9/16] bg-[#111] shadow-2xl group">
                         <video src="video2.mp4.mp4" autoplay muted loop playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"></video>
                     </div>
-                    <!-- Vídeo 3 -->
                     <div class="relative overflow-hidden rounded-2xl aspect-[9/16] bg-[#111] shadow-2xl group">
                         <video src="video3.mp4.mp4" autoplay muted loop playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"></video>
                     </div>
@@ -173,63 +170,66 @@
             </div>
         </section>
 
-        <!-- SERVIÇOS -->
-        <section id="servicos" class="py-20 sm:py-24 px-4 sm:px-6 bg-[#0a0a0a]">
-            <div class="max-w-7xl mx-auto">
-                <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3"><span class="mr-2">01</span> O que fazemos</p>
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 sm:mb-16">Audiovisual para o que a sua marca precisa.</h2>
+        <!-- SERVIÇOS (MELHORADO COM CARTÕES E ESPAÇAMENTO ELEGANTE) -->
+        <section id="servicos" class="py-24 sm:py-32 px-4 sm:px-6 bg-[#0a0a0a]">
+            <div class="max-w-6xl mx-auto">
+                <div class="mb-16">
+                    <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3">01 / O que fazemos</p>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">Audiovisual para o que a sua marca precisa.</h2>
+                </div>
                 
-                <div class="grid md:grid-cols-2 gap-8 sm:gap-12 max-w-4xl">
-                    <article class="border-t border-gray-800 pt-6 sm:pt-8">
-                        <span class="text-gray-600 text-sm font-bold block mb-4">01</span>
-                        <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Fotografia Comercial e Retratos</h3>
-                        <p class="text-gray-400 text-sm sm:text-base mb-6">Ensaios fotográficos e imagens de produtos que valorizam detalhes, texturas e cores para o seu negócio.</p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <article class="p-8 sm:p-10 rounded-2xl bg-[#121212]/80 border border-gray-800/80 hover:border-gray-500 transition duration-500 group">
+                        <span class="text-gray-500 text-xs font-bold tracking-widest block mb-6">SERVIÇO 01</span>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-4 text-white group-hover:text-gray-200 transition">Fotografia Comercial e Retratos</h3>
+                        <p class="text-gray-400 text-sm sm:text-base leading-relaxed">Ensaios fotográficos e imagens de produtos que valorizam detalhes, texturas e cores para o seu negócio.</p>
                     </article>
-                    <article class="border-t border-gray-800 pt-6 sm:pt-8">
-                        <span class="text-gray-600 text-sm font-bold block mb-4">02</span>
-                        <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Produção de Vídeo e Reels</h3>
-                        <p class="text-gray-400 text-sm sm:text-base mb-6">Conteúdo dinâmico em vídeo para redes sociais e institucionais com padrão cinematográfico.</p>
+
+                    <article class="p-8 sm:p-10 rounded-2xl bg-[#121212]/80 border border-gray-800/80 hover:border-gray-500 transition duration-500 group">
+                        <span class="text-gray-500 text-xs font-bold tracking-widest block mb-6">SERVIÇO 02</span>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-4 text-white group-hover:text-gray-200 transition">Produção de Vídeo e Reels</h3>
+                        <p class="text-gray-400 text-sm sm:text-base leading-relaxed">Conteúdo dinâmico em vídeo para redes sociais e institucionais com padrão cinematográfico.</p>
                     </article>
                 </div>
             </div>
         </section>
 
         <!-- PORTFÓLIO -->
-        <section id="projetos" class="py-20 sm:py-24 px-4 sm:px-6 bg-[#050505]">
+        <section id="projetos" class="py-24 sm:py-32 px-4 sm:px-6 bg-[#050505]">
             <div class="max-w-7xl mx-auto">
-                <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3"><span class="mr-2">02</span> Portfólio</p>
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 sm:mb-16">Últimos Trabalhos.</h2>
+                <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3">02 / Portfólio</p>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-16">Últimos Trabalhos.</h2>
                 
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
-                    <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+                    <div class="overflow-hidden rounded-xl group cursor-pointer aspect-square bg-[#111]">
                         <img src="imagem.jpg" alt="Portfólio" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
-                    <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
+                    <div class="overflow-hidden rounded-xl group cursor-pointer aspect-square bg-[#111]">
                         <img src="imagem1.jpg" alt="Portfólio" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
-                    <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
+                    <div class="overflow-hidden rounded-xl group cursor-pointer aspect-square bg-[#111]">
                         <img src="imagem2.jpg" alt="Portfólio" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
-                    <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
+                    <div class="overflow-hidden rounded-xl group cursor-pointer aspect-square bg-[#111]">
                         <img src="imagem3.jpg" alt="Portfólio" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
-                    <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
+                    <div class="overflow-hidden rounded-xl group cursor-pointer aspect-square bg-[#111]">
                         <img src="imagem4.jpg" alt="Portfólio" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
-                    <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
+                    <div class="overflow-hidden rounded-xl group cursor-pointer aspect-square bg-[#111]">
                         <img src="menina.jpg" alt="Portfólio" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
                 </div>
 
-                <div class="mt-10 sm:mt-12 text-center">
-                    <a href="https://instagram.com/jhvisualrp" target="_blank" class="inline-block px-6 sm:px-8 py-3.5 sm:py-4 bg-transparent border border-gray-600 text-white text-sm sm:text-base font-semibold rounded-full hover:border-white transition">
+                <div class="mt-12 text-center">
+                    <a href="https://instagram.com/jhvisualrp" target="_blank" class="inline-block px-8 py-4 bg-transparent border border-gray-600 text-white text-sm sm:text-base font-semibold rounded-full hover:border-white transition">
                         Ver mais no Instagram
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- CARROSSEL DE MARCAS LOGO ABAIXO DO PORTFÓLIO -->
+        <!-- CARROSSEL DE MARCAS -->
         <section id="marcas" class="marquee-section">
             <div class="max-w-7xl mx-auto px-4 mb-4 text-center">
                 <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase">Marcas em Destaque</p>
@@ -247,7 +247,7 @@
                         <span class="text-sm sm:text-base font-bold tracking-wide text-white">MEV</span>
                     </div>
                 </div>
-                <!-- Grupo 2 (Looping contínuo) -->
+                <!-- Grupo 2 -->
                 <div class="marquee-group" aria-hidden="true">
                     <div class="brand-item">
                         <img src="sabores.png" alt="Sabores di Casa" class="brand-logo">
@@ -271,8 +271,8 @@
     </main>
 
     <!-- RODAPÉ -->
-    <footer id="contato" class="bg-[#050505] py-12 sm:py-16 px-4 sm:px-6 border-t border-gray-900">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
+    <footer id="contato" class="bg-[#050505] py-16 px-4 sm:px-6 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <div>
                 <img src="logo.png" alt="JHVISUALRP Logo" class="h-16 sm:h-20 w-auto object-contain mb-6">
                 <p class="text-gray-400 text-sm sm:text-base max-w-sm">O meu foco é criar projetos autênticos a partir do zero, focados exatamente no que você precisa comunicar.</p>
