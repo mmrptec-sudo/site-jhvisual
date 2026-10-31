@@ -17,21 +17,6 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #f3f4f6; }
         
-        /* Efeito 3D de profundidade e movimento contínuo no fundo */
-        @keyframes float3D {
-            0% { transform: scale(1) translate(0px, 0px) rotate(0deg); }
-            33% { transform: scale(1.08) translate(-15px, -10px) rotate(1deg); }
-            66% { transform: scale(1.12) translate(15px, 10px) rotate(-1deg); }
-            100% { transform: scale(1) translate(0px, 0px) rotate(0deg); }
-        }
-
-        .bg-3d-motion {
-            background: linear-gradient(rgba(10, 10, 10, 0.75), rgba(10, 10, 10, 0.85)), 
-                        url('https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=2071&auto=format&fit=crop') no-repeat center center/cover;
-            animation: float3D 25s infinite ease-in-out;
-            will-change: transform;
-        }
-
         /* Carrossel Infinito Fluido e Contínuo */
         .marquee-section {
             background: #050505;
@@ -92,16 +77,14 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 0.5rem 1.25rem;
-            border-radius: 9999px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
         }
 
         .brand-logo {
-            height: 36px;
+            height: 38px;
             width: auto;
             object-fit: contain;
+            mix-blend-mode: screen;
+            filter: contrast(130%) brightness(1.2);
         }
     </style>
 </head>
@@ -125,24 +108,42 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
     <main>
-        <section class="relative h-screen flex flex-col justify-center px-4 sm:px-6 pt-20 overflow-hidden">
-            <div class="absolute inset-0 bg-3d-motion z-0"></div>
+        <!-- HERO SECTION COM OS 3 VÍDEOS EM DESTAQUE -->
+        <section class="relative min-h-screen flex flex-col justify-center px-4 sm:px-6 pt-28 pb-16 bg-[#0a0a0a]">
+            <div class="max-w-7xl mx-auto w-full">
+                <!-- Título e Texto -->
+                <div class="mb-10 text-center md:text-left">
+                    <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-4">
+                        Fotografia & Vídeo <br class="hidden sm:block">
+                        <span class="text-gray-400">em Ribeirão Preto.</span>
+                    </h1>
+                    <p class="text-base sm:text-xl text-gray-300 max-w-2xl font-light">
+                        O caminho da sua marca começa aqui. Unimos a essência de projetos incríveis a imagens cinematográficas que convertem.
+                    </p>
+                </div>
 
-            <div class="max-w-7xl mx-auto w-full z-10 relative">
-                <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-4 sm:mb-6">
-                    Fotografia & Vídeo <br class="hidden sm:block">
-                    <span class="text-gray-400">em Ribeirão Preto.</span>
-                </h1>
-                <p class="text-base sm:text-xl text-gray-300 mb-8 sm:mb-10 max-w-xl sm:max-w-2xl font-light">
-                    O caminho da sua marca começa aqui. Unimos a essência de projetos incríveis a imagens cinematográficas que convertem.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
-                    <a href="https://wa.me/5516982055971" target="_blank" class="px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-black text-center text-sm sm:text-base font-semibold rounded-full hover:bg-gray-200 transition shadow-lg">
+                <!-- Grid dos 3 Vídeos Cinematográficos -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                    <!-- Vídeo 1 -->
+                    <div class="relative overflow-hidden rounded-2xl aspect-[9/16] bg-[#111] shadow-2xl group">
+                        <video src="video1.mp4.mp4" autoplay muted loop playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"></video>
+                    </div>
+                    <!-- Vídeo 2 -->
+                    <div class="relative overflow-hidden rounded-2xl aspect-[9/16] bg-[#111] shadow-2xl group">
+                        <video src="video2.mp4.mp4" autoplay muted loop playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"></video>
+                    </div>
+                    <!-- Vídeo 3 -->
+                    <div class="relative overflow-hidden rounded-2xl aspect-[9/16] bg-[#111] shadow-2xl group">
+                        <video src="video3.mp4.mp4" autoplay muted loop playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"></video>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
+                    <a href="https://wa.me/5516982055971" target="_blank" class="px-8 py-4 bg-white text-black text-center text-base font-semibold rounded-full hover:bg-gray-200 transition shadow-lg">
                         Pedir um orçamento
                     </a>
-                    <a href="#projetos" class="px-6 sm:px-8 py-3.5 sm:py-4 bg-transparent border border-gray-600 text-white text-center text-sm sm:text-base font-semibold rounded-full hover:border-white transition">
+                    <a href="#projetos" class="px-8 py-4 bg-transparent border border-gray-600 text-white text-center text-base font-semibold rounded-full hover:border-white transition">
                         Ver portfólio
                     </a>
                 </div>
@@ -205,7 +206,7 @@
             </div>
         </section>
 
-        <!-- CARROSSEL DE MARCAS (AGORA LOGO ABAIXO DO PORTFÓLIO) -->
+        <!-- CARROSSEL DE MARCAS (LOGO ABAIXO DO PORTFÓLIO) -->
         <section id="marcas" class="marquee-section">
             <div class="max-w-7xl mx-auto px-4 mb-4 text-center">
                 <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase">Marcas em Destaque</p>
@@ -223,7 +224,7 @@
                         <span class="text-sm sm:text-base font-bold tracking-wide text-white">MEV</span>
                     </div>
                 </div>
-                <!-- Grupo 2 (Cópia exata para garantir o loop infinito contínuo) -->
+                <!-- Grupo 2 (Looping contínuo) -->
                 <div class="marquee-group" aria-hidden="true">
                     <div class="brand-item">
                         <img src="sabores.png" alt="Sabores di Casa" class="brand-logo">
