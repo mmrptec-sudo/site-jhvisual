@@ -17,17 +17,19 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #f3f4f6; }
         
-        /* Animação de movimento suave (zoom cinematográfico) no fundo */
-        @keyframes heroZoom {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.08); }
-            100% { transform: scale(1); }
+        /* Efeito 3D de profundidade e movimento contínuo só na camada de fundo */
+        @keyframes float3D {
+            0% { transform: scale(1) translate(0px, 0px) rotate(0deg); }
+            33% { transform: scale(1.08) translate(-15px, -10px) rotate(1deg); }
+            66% { transform: scale(1.12) translate(15px, 10px) rotate(-1deg); }
+            100% { transform: scale(1) translate(0px, 0px) rotate(0deg); }
         }
 
-        .hero-animated-bg {
+        .bg-3d-motion {
             background: linear-gradient(rgba(10, 10, 10, 0.75), rgba(10, 10, 10, 0.85)), 
                         url('https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=2071&auto=format&fit=crop') no-repeat center center/cover;
-            animation: heroZoom 20s infinite ease-in-out;
+            animation: float3D 25s infinite ease-in-out;
+            will-change: transform;
         }
     </style>
 </head>
@@ -51,11 +53,14 @@
         </div>
     </header>
 
-    <!-- HERO SECTION COM FUNDO EM MOVIMENTO E TÍTULO AJUSTADO -->
+    <!-- HERO SECTION: Fundo 3D em movimento e Título Estático -->
     <main>
-        <section class="hero-animated-bg h-screen flex flex-col justify-center px-4 sm:px-6 pt-20 overflow-hidden">
-            <div class="max-w-7xl mx-auto w-full z-10">
-                <!-- Título ajustado sem a palavra Vídeo -->
+        <section class="relative h-screen flex flex-col justify-center px-4 sm:px-6 pt-20 overflow-hidden">
+            <!-- Camada de fundo com animação 3D separada -->
+            <div class="absolute inset-0 bg-3d-motion z-0"></div>
+
+            <!-- Camada de texto estática (parada por cima) -->
+            <div class="max-w-7xl mx-auto w-full z-10 relative">
                 <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-4 sm:mb-6">
                     Fotografia <br class="hidden sm:block">
                     <span class="text-gray-400">em Ribeirão Preto.</span>
@@ -123,13 +128,12 @@
             </div>
         </section>
 
-        <!-- PROJETOS (PORTFÓLIO OTIMIZADO PARA CELULAR) -->
+        <!-- PROJETOS (PORTFÓLIO OTIMIZADO) -->
         <section id="projetos" class="py-20 sm:py-24 px-4 sm:px-6 bg-[#050505]">
             <div class="max-w-7xl mx-auto">
                 <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3"><span class="mr-2">03</span> Portfólio</p>
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 sm:mb-16">Últimos Trabalhos.</h2>
                 
-                <!-- Grade adaptada para colunas fluidas no mobile -->
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
                     <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
                         <img src="imagem.jpg" alt="Portfólio JHVISUALRP" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
