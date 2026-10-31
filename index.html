@@ -32,27 +32,30 @@
             will-change: transform;
         }
 
-        /* Animação contínua do carrossel */
-        @keyframes scrollMarquee {
+        /* Carrossel Infinito Fluido (Loop Perfeito) */
+        @keyframes infiniteScroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
-        .marquee-container {
+        .marquee-wrapper {
             display: flex;
             overflow: hidden;
             width: 100%;
             position: relative;
+            background: transparent;
         }
 
-        .marquee-track {
+        .marquee-group {
             display: flex;
-            gap: 6rem;
-            width: max-content;
-            animation: scrollMarquee 20s linear infinite;
+            align-items: center;
+            justify-content: space-around;
+            gap: 5rem;
+            min-width: 100%;
+            animation: infiniteScroll 18s linear infinite;
         }
 
-        .marquee-track:hover {
+        .marquee-wrapper:hover .marquee-group {
             animation-play-state: paused;
         }
 
@@ -108,46 +111,33 @@
             </div>
         </section>
 
-        <!-- CARROSSEL CONTÍNUO SEM BORDAS E COM TRANSPARÊNCIA PERFEITA -->
+        <!-- CARROSSEL INFINITO SEM BORDAS E TRANSPARENTE -->
         <section id="marcas" class="py-16 bg-[#0a0a0a] overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 mb-8 text-center">
                 <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase">Marcas em Destaque</p>
             </div>
             
-            <div class="marquee-container">
-                <div class="marquee-track">
-                    <!-- Bloco 1 -->
-                    <div class="flex items-center gap-20">
-                        <div class="flex items-center gap-4">
-                            <img src="sabores.png" alt="Sabores di Casa" class="h-14 sm:h-16 w-auto object-contain transparent-logo">
-                            <span class="text-xl sm:text-2xl font-bold tracking-wide text-white">Sabores di Casa</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <img src="mev.png" alt="MEV" class="h-10 sm:h-12 w-auto object-contain transparent-logo">
-                            <span class="text-xl sm:text-2xl font-bold tracking-wide text-white">MEV</span>
-                        </div>
+            <div class="marquee-wrapper">
+                <!-- Grupo 1 do carrossel -->
+                <div class="marquee-group">
+                    <div class="flex items-center gap-4">
+                        <img src="sabores.png" alt="Sabores di Casa" class="h-14 sm:h-16 w-auto object-contain transparent-logo">
+                        <span class="text-xl sm:text-2xl font-bold tracking-wide text-white">Sabores di Casa</span>
                     </div>
-                    <!-- Bloco 2 (Looping contínuo infinito) -->
-                    <div class="flex items-center gap-20">
-                        <div class="flex items-center gap-4">
-                            <img src="sabores.png" alt="Sabores di Casa" class="h-14 sm:h-16 w-auto object-contain transparent-logo">
-                            <span class="text-xl sm:text-2xl font-bold tracking-wide text-white">Sabores di Casa</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <img src="mev.png" alt="MEV" class="h-10 sm:h-12 w-auto object-contain transparent-logo">
-                            <span class="text-xl sm:text-2xl font-bold tracking-wide text-white">MEV</span>
-                        </div>
+                    <div class="flex items-center gap-4">
+                        <img src="mev.png" alt="MEV" class="h-10 sm:h-12 w-auto object-contain transparent-logo">
+                        <span class="text-xl sm:text-2xl font-bold tracking-wide text-white">MEV</span>
                     </div>
-                    <!-- Bloco 3 (Garante fluidez total sem saltos) -->
-                    <div class="flex items-center gap-20">
-                        <div class="flex items-center gap-4">
-                            <img src="sabores.png" alt="Sabores di Casa" class="h-14 sm:h-16 w-auto object-contain transparent-logo">
-                            <span class="text-xl sm:text-2xl font-bold tracking-wide text-white">Sabores di Casa</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <img src="mev.png" alt="MEV" class="h-10 sm:h-12 w-auto object-contain transparent-logo">
-                            <span class="text-xl sm:text-2xl font-bold tracking-wide text-white">MEV</span>
-                        </div>
+                </div>
+                <!-- Grupo 2 do carrossel (Idêntico ao Grupo 1 para garantir o loop infinito sem saltos) -->
+                <div class="marquee-group" aria-hidden="true">
+                    <div class="flex items-center gap-4">
+                        <img src="sabores.png" alt="Sabores di Casa" class="h-14 sm:h-16 w-auto object-contain transparent-logo">
+                        <span class="text-xl sm:text-2xl font-bold tracking-wide text-white">Sabores di Casa</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <img src="mev.png" alt="MEV" class="h-10 sm:h-12 w-auto object-contain transparent-logo">
+                        <span class="text-xl sm:text-2xl font-bold tracking-wide text-white">MEV</span>
                     </div>
                 </div>
             </div>
