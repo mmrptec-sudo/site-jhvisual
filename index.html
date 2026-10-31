@@ -5,31 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JHVISUALRP | Fotografia e Vídeo</title>
     
-    <!-- FAVICON (Ícone na aba do navegador) -->
+    <!-- FAVICON -->
     <link rel="icon" type="image/png" href="logo.png">
 
-    <!-- Importa o Tailwind CSS para o visual moderno -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Importa o Supabase -->
+    <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #f3f4f6; }
         
-        /* Fundo da primeira dobra simulando um estúdio/câmera */
-        .hero-bg {
-            background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.9)), 
+        /* Animação de movimento suave (zoom cinematográfico) no fundo */
+        @keyframes heroZoom {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+
+        .hero-animated-bg {
+            background: linear-gradient(rgba(10, 10, 10, 0.75), rgba(10, 10, 10, 0.85)), 
                         url('https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=2071&auto=format&fit=crop') no-repeat center center/cover;
+            animation: heroZoom 20s infinite ease-in-out;
         }
     </style>
 </head>
 <body>
 
-    <!-- CABEÇALHO COM LOGO -->
+    <!-- CABEÇALHO -->
     <header class="fixed w-full top-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-sm border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 sm:h-24 flex items-center justify-between">
             <a href="#" class="flex items-center">
-                <img src="logo.png" alt="JHVISUALRP Logo" class="h-16 md:h-20 w-auto object-contain brightness-125 filter">
+                <img src="logo.png" alt="JHVISUALRP Logo" class="h-12 sm:h-16 md:h-20 w-auto object-contain brightness-125 filter">
             </a>
             <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-300">
                 <a href="#servicos" class="hover:text-white transition">Serviços</a>
@@ -37,28 +45,29 @@
                 <a href="#projetos" class="hover:text-white transition">Portfólio</a>
                 <a href="#contato" class="hover:text-white transition">Contato</a>
             </nav>
-            <a href="https://wa.me/5516982055971" target="_blank" class="px-5 py-2.5 bg-white text-black text-sm font-semibold rounded-full hover:bg-gray-200 transition">
+            <a href="https://wa.me/5516982055971" target="_blank" class="px-4 sm:px-5 py-2 sm:py-2.5 bg-white text-black text-xs sm:text-sm font-semibold rounded-full hover:bg-gray-200 transition">
                 Orçamento
             </a>
         </div>
     </header>
 
-    <!-- HERO SECTION (Início) -->
+    <!-- HERO SECTION COM FUNDO EM MOVIMENTO E TÍTULO AJUSTADO -->
     <main>
-        <section class="hero-bg h-screen flex flex-col justify-center px-6 pt-20">
-            <div class="max-w-7xl mx-auto w-full">
-                <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-6">
-                    Fotografia e Vídeo <br>
-                    <span class="text-gray-500">em Ribeirão Preto.</span>
+        <section class="hero-animated-bg h-screen flex flex-col justify-center px-4 sm:px-6 pt-20 overflow-hidden">
+            <div class="max-w-7xl mx-auto w-full z-10">
+                <!-- Título ajustado sem a palavra Vídeo -->
+                <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-4 sm:mb-6">
+                    Fotografia <br class="hidden sm:block">
+                    <span class="text-gray-400">em Ribeirão Preto.</span>
                 </h1>
-                <p class="text-xl text-gray-400 mb-10 max-w-2xl">
+                <p class="text-base sm:text-xl text-gray-300 mb-8 sm:mb-10 max-w-xl sm:max-w-2xl font-light">
                     O caminho da sua marca começa aqui. Transformo ideias em imagens cinematográficas e fotografias que conectam e convertem.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="https://wa.me/5516982055971" target="_blank" class="px-8 py-4 bg-white text-black text-center font-semibold rounded-full hover:bg-gray-200 transition">
+                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
+                    <a href="https://wa.me/5516982055971" target="_blank" class="px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-black text-center text-sm sm:text-base font-semibold rounded-full hover:bg-gray-200 transition shadow-lg">
                         Pedir um orçamento
                     </a>
-                    <a href="#servicos" class="px-8 py-4 bg-transparent border border-gray-600 text-white text-center font-semibold rounded-full hover:border-gray-400 transition">
+                    <a href="#servicos" class="px-6 sm:px-8 py-3.5 sm:py-4 bg-transparent border border-gray-600 text-white text-center text-sm sm:text-base font-semibold rounded-full hover:border-white transition">
                         Conhecer serviços
                     </a>
                 </div>
@@ -66,89 +75,84 @@
         </section>
 
         <!-- SERVIÇOS -->
-        <section id="servicos" class="py-24 px-6 bg-[#0a0a0a]">
+        <section id="servicos" class="py-20 sm:py-24 px-4 sm:px-6 bg-[#0a0a0a]">
             <div class="max-w-7xl mx-auto">
-                <p class="text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3"><span class="mr-2">01</span> O que eu faço</p>
-                <h2 class="text-4xl md:text-5xl font-bold mb-16">Audiovisual para o que a sua marca precisa.</h2>
+                <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3"><span class="mr-2">01</span> O que eu faço</p>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 sm:mb-16">Audiovisual para o que a sua marca precisa.</h2>
                 
-                <div class="grid md:grid-cols-3 gap-12">
-                    <article class="border-t border-gray-800 pt-8">
+                <div class="grid md:grid-cols-3 gap-8 sm:gap-12">
+                    <article class="border-t border-gray-800 pt-6 sm:pt-8">
                         <span class="text-gray-600 text-sm font-bold block mb-4">01</span>
-                        <h3 class="text-2xl font-bold mb-4">Reels para Redes Sociais</h3>
-                        <p class="text-gray-400 mb-6">Conteúdo dinâmico para apresentar o seu trabalho e conversar com o seu público. Eu preparo o roteiro, dirijo a gravação e entrego os Reels editados.</p>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Reels para Redes Sociais</h3>
+                        <p class="text-gray-400 text-sm sm:text-base mb-6">Conteúdo dinâmico para apresentar o seu trabalho e conversar com o seu público. Eu preparo o roteiro, dirijo a gravação e entrego os Reels editados.</p>
                     </article>
-                    <article class="border-t border-gray-800 pt-8">
+                    <article class="border-t border-gray-800 pt-6 sm:pt-8">
                         <span class="text-gray-600 text-sm font-bold block mb-4">02</span>
-                        <h3 class="text-2xl font-bold mb-4">Vídeos Institucionais</h3>
-                        <p class="text-gray-400 mb-6">Para apresentar a sua empresa e autoridade. Do roteiro à finalização, cada etapa parte da mensagem que você precisa comunicar.</p>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Vídeos Institucionais</h3>
+                        <p class="text-gray-400 text-sm sm:text-base mb-6">Para apresentar a sua empresa e autoridade. Do roteiro à finalização, cada etapa parte da mensagem que você precisa comunicar.</p>
                     </article>
-                    <article class="border-t border-gray-800 pt-8">
+                    <article class="border-t border-gray-800 pt-6 sm:pt-8">
                         <span class="text-gray-600 text-sm font-bold block mb-4">03</span>
-                        <h3 class="text-2xl font-bold mb-4">Fotografia e Produto</h3>
-                        <p class="text-gray-400 mb-6">Ensaios fotográficos e vídeos que mostram os detalhes do que você oferece: texturas, cores, preparo e a verdadeira experiência do seu serviço.</p>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Fotografia e Produto</h3>
+                        <p class="text-gray-400 text-sm sm:text-base mb-6">Ensaios fotográficos e vídeos que mostram os detalhes do que você oferece: texturas, cores, preparo e a verdadeira experiência do seu serviço.</p>
                     </article>
                 </div>
             </div>
         </section>
 
         <!-- PROCESSO -->
-        <section id="processo" class="py-24 px-6 bg-[#111]">
+        <section id="processo" class="py-20 sm:py-24 px-4 sm:px-6 bg-[#111]">
             <div class="max-w-7xl mx-auto">
-                <p class="text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3"><span class="mr-2">02</span> Como eu trabalho</p>
-                <h2 class="text-4xl md:text-5xl font-bold mb-16">Do briefing à entrega.</h2>
+                <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3"><span class="mr-2">02</span> Como eu trabalho</p>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 sm:mb-16">Do briefing à entrega.</h2>
                 
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-[#1a1a1a] p-8 rounded-2xl">
-                        <h3 class="text-xl font-bold text-white mb-2">1. Briefing</h3>
-                        <p class="text-gray-400">Entendo a sua marca, o que você vende e para quem. A partir daí, traçamos a rota do projeto.</p>
+                <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
+                    <div class="bg-[#1a1a1a] p-6 sm:p-8 rounded-2xl">
+                        <h3 class="text-lg sm:text-xl font-bold text-white mb-2">1. Briefing</h3>
+                        <p class="text-gray-400 text-sm sm:text-base">Entendo a sua marca, o que você vende e para quem. A partir daí, traçamos a rota do projeto.</p>
                     </div>
-                    <div class="bg-[#1a1a1a] p-8 rounded-2xl">
-                        <h3 class="text-xl font-bold text-white mb-2">2. Produção</h3>
-                        <p class="text-gray-400">Roteiro, captação e direção. Cada detalhe é pensado antes de eu ligar a câmera.</p>
+                    <div class="bg-[#1a1a1a] p-6 sm:p-8 rounded-2xl">
+                        <h3 class="text-lg sm:text-xl font-bold text-white mb-2">2. Produção</h3>
+                        <p class="text-gray-400 text-sm sm:text-base">Roteiro, captação e direção. Cada detalhe é pensado antes de eu ligar a câmera.</p>
                     </div>
-                    <div class="bg-[#1a1a1a] p-8 rounded-2xl">
-                        <h3 class="text-xl font-bold text-white mb-2">3. Entrega</h3>
-                        <p class="text-gray-400">Edição, tratamento de cor e finalização. Você recebe o material pronto com alta qualidade.</p>
+                    <div class="bg-[#1a1a1a] p-6 sm:p-8 rounded-2xl">
+                        <h3 class="text-lg sm:text-xl font-bold text-white mb-2">3. Entrega</h3>
+                        <p class="text-gray-400 text-sm sm:text-base">Edição, tratamento de cor e finalização. Você recebe o material pronto com alta qualidade.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- PROJETOS (PORTFÓLIO COM OS 6 FICHEIROS EXATOS) -->
-        <section id="projetos" class="py-24 px-6 bg-[#050505]">
+        <!-- PROJETOS (PORTFÓLIO OTIMIZADO PARA CELULAR) -->
+        <section id="projetos" class="py-20 sm:py-24 px-4 sm:px-6 bg-[#050505]">
             <div class="max-w-7xl mx-auto">
-                <p class="text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3"><span class="mr-2">03</span> Portfólio</p>
-                <h2 class="text-4xl md:text-5xl font-bold mb-16">Últimos Trabalhos.</h2>
+                <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3"><span class="mr-2">03</span> Portfólio</p>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 sm:mb-16">Últimos Trabalhos.</h2>
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <!-- Bloco 1: imagem.jpg -->
+                <!-- Grade adaptada para colunas fluidas no mobile -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
                     <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
                         <img src="imagem.jpg" alt="Portfólio JHVISUALRP" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
-                    <!-- Bloco 2: imagem1.jpg -->
                     <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
                         <img src="imagem1.jpg" alt="Portfólio JHVISUALRP" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
-                    <!-- Bloco 3: imagem2.jpg -->
                     <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
                         <img src="imagem2.jpg" alt="Portfólio JHVISUALRP" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
-                    <!-- Bloco 4: imagem3.jpg -->
                     <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
                         <img src="imagem3.jpg" alt="Portfólio JHVISUALRP" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
-                    <!-- Bloco 5: imagem4.jpg -->
                     <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
                         <img src="imagem4.jpg" alt="Portfólio JHVISUALRP" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
-                    <!-- Bloco 6: menina.jpg -->
                     <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
                         <img src="menina.jpg" alt="Portfólio JHVISUALRP" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
                 </div>
 
-                <div class="mt-12 text-center">
-                    <a href="https://instagram.com/jhvisualrp" target="_blank" class="inline-block px-8 py-4 bg-transparent border border-gray-600 text-white font-semibold rounded-full hover:border-white transition">
+                <div class="mt-10 sm:mt-12 text-center">
+                    <a href="https://instagram.com/jhvisualrp" target="_blank" class="inline-block px-6 sm:px-8 py-3.5 sm:py-4 bg-transparent border border-gray-600 text-white text-sm sm:text-base font-semibold rounded-full hover:border-white transition">
                         Ver mais no Instagram
                     </a>
                 </div>
@@ -164,26 +168,26 @@
         </section>
     </main>
 
-    <!-- RODAPÉ COM LOGO -->
-    <footer id="contato" class="bg-[#050505] py-16 px-6 border-t border-gray-900">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <!-- RODAPÉ -->
+    <footer id="contato" class="bg-[#050505] py-12 sm:py-16 px-4 sm:px-6 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
             <div>
-                <img src="logo.png" alt="JHVISUALRP Logo" class="h-20 w-auto object-contain brightness-125 filter mb-6">
-                <p class="text-gray-400 max-w-sm">O meu foco é criar projetos autênticos a partir do zero, focados exatamente no que você precisa comunicar.</p>
+                <img src="logo.png" alt="JHVISUALRP Logo" class="h-16 sm:h-20 w-auto object-contain brightness-125 filter mb-6">
+                <p class="text-gray-400 text-sm sm:text-base max-w-sm">O meu foco é criar projetos autênticos a partir do zero, focados exatamente no que você precisa comunicar.</p>
             </div>
             <div>
                 <h3 class="font-bold mb-4 text-white">Contato</h3>
-                <div class="flex flex-col gap-2 text-gray-400">
+                <div class="flex flex-col gap-2 text-gray-400 text-sm sm:text-base">
                     <a href="https://instagram.com/jhvisualrp" target="_blank" class="hover:text-white">Instagram: @jhvisualrp</a>
                     <a href="mailto:contato@jhvisualrp.com.br" class="hover:text-white">Email: contato@jhvisualrp.com.br</a>
                     <a href="https://wa.me/5516982055971" target="_blank" class="hover:text-white">WhatsApp: (16) 98205-5971</a>
-                    <p class="mt-4 text-sm">Ribeirão Preto, SP</p>
+                    <p class="mt-2 text-sm">Ribeirão Preto, SP</p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- SCRIPT DE LIGAÇÃO AO SUPABASE -->
+    <!-- SCRIPT SUPABASE -->
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const lista = document.getElementById('lista-mensagens');
@@ -193,16 +197,12 @@
             try {
                 const dbClient = supabase.createClient(supabaseUrl, supabaseKey);
                 const { data, error } = await dbClient.from('mensagens').select('*');
-                lista.innerHTML = ''; 
-                if (error) {
-                    console.error("Erro na tabela:", error.message);
-                    return;
-                }
+                if (error) return;
                 if (data && data.length > 0) {
                     console.log("Supabase conectado com sucesso!");
                 }
             } catch (erro) {
-                console.error("Falha de conexão com Supabase:", erro);
+                console.error("Erro Supabase:", erro);
             }
         });
     </script>
