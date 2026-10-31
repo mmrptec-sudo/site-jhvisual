@@ -32,16 +32,24 @@
             will-change: transform;
         }
 
-        <!-- Animação do carrossel infinito a passar em fila -->
+        <!-- Animação contínua do carrossel sem parar -->
         @keyframes scrollMarquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
+        .marquee-container {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+
         .marquee-track {
             display: flex;
+            gap: 2rem;
             width: max-content;
-            animation: scrollMarquee 20s linear infinite;
+            animation: scrollMarquee 15s linear infinite;
         }
 
         .marquee-track:hover {
@@ -56,7 +64,7 @@
 </head>
 <body>
 
-    <!-- CABEÇALHO COM A LOGO GARANTIDA -->
+    <!-- CABEÇALHO -->
     <header class="fixed w-full top-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-sm border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 sm:h-24 flex items-center justify-between">
             <a href="#" class="flex items-center">
@@ -98,15 +106,15 @@
             </div>
         </section>
 
-        <!-- CARROSSEL CONTÍNUO DE MARCAS -->
+        <!-- CARROSSEL CONTÍNUO DE MARCAS (sabores.png e mev.png em movimento constante) -->
         <section id="marcas" class="py-16 bg-[#0e0e0e] border-y border-gray-900 overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 mb-8 text-center">
                 <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase">Marcas em Destaque</p>
             </div>
             
-            <div class="relative w-full overflow-hidden whitespace-nowrap">
-                <div class="marquee-track flex gap-8 items-center">
-                    <!-- Sequência 1 -->
+            <div class="marquee-container">
+                <div class="marquee-track">
+                    <!-- Bloco 1 -->
                     <div class="flex items-center gap-8">
                         <div class="flex items-center gap-4 bg-[#141414] px-8 py-5 rounded-2xl border border-gray-800 shadow-xl min-w-[280px] justify-center">
                             <img src="sabores.png" alt="Sabores di Casa" class="h-12 w-auto object-contain logo-transparent">
@@ -114,10 +122,10 @@
                         </div>
                         <div class="flex items-center gap-4 bg-[#141414] px-8 py-5 rounded-2xl border border-gray-800 shadow-xl min-w-[280px] justify-center">
                             <img src="mev.png" alt="MEV" class="h-10 w-auto object-contain logo-transparent">
-                            <span class="text-lg font-bold tracking-wide text-white">MEV Visual</span>
+                            <span class="text-lg font-bold tracking-wide text-white">MEV</span>
                         </div>
                     </div>
-                    <!-- Sequência 2 (Looping infinito) -->
+                    <!-- Bloco 2 (Duplicado para criar o efeito contínuo infinito) -->
                     <div class="flex items-center gap-8">
                         <div class="flex items-center gap-4 bg-[#141414] px-8 py-5 rounded-2xl border border-gray-800 shadow-xl min-w-[280px] justify-center">
                             <img src="sabores.png" alt="Sabores di Casa" class="h-12 w-auto object-contain logo-transparent">
@@ -125,10 +133,10 @@
                         </div>
                         <div class="flex items-center gap-4 bg-[#141414] px-8 py-5 rounded-2xl border border-gray-800 shadow-xl min-w-[280px] justify-center">
                             <img src="mev.png" alt="MEV" class="h-10 w-auto object-contain logo-transparent">
-                            <span class="text-lg font-bold tracking-wide text-white">MEV Visual</span>
+                            <span class="text-lg font-bold tracking-wide text-white">MEV</span>
                         </div>
                     </div>
-                    <!-- Sequência 3 -->
+                    <!-- Bloco 3 (Garante transição perfeita sem falhas) -->
                     <div class="flex items-center gap-8">
                         <div class="flex items-center gap-4 bg-[#141414] px-8 py-5 rounded-2xl border border-gray-800 shadow-xl min-w-[280px] justify-center">
                             <img src="sabores.png" alt="Sabores di Casa" class="h-12 w-auto object-contain logo-transparent">
@@ -136,7 +144,7 @@
                         </div>
                         <div class="flex items-center gap-4 bg-[#141414] px-8 py-5 rounded-2xl border border-gray-800 shadow-xl min-w-[280px] justify-center">
                             <img src="mev.png" alt="MEV" class="h-10 w-auto object-contain logo-transparent">
-                            <span class="text-lg font-bold tracking-wide text-white">MEV Visual</span>
+                            <span class="text-lg font-bold tracking-wide text-white">MEV</span>
                         </div>
                     </div>
                 </div>
