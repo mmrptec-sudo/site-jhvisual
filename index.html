@@ -17,7 +17,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #f3f4f6; }
         
-        <!-- Efeito 3D de profundidade e movimento contínuo no fundo -->
+        /* Efeito 3D de profundidade e movimento contínuo no fundo */
         @keyframes float3D {
             0% { transform: scale(1) translate(0px, 0px) rotate(0deg); }
             33% { transform: scale(1.08) translate(-15px, -10px) rotate(1deg); }
@@ -32,7 +32,7 @@
             will-change: transform;
         }
 
-        <!-- Animação contínua do carrossel sem parar -->
+        /* Animação contínua do carrossel */
         @keyframes scrollMarquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
@@ -47,18 +47,19 @@
 
         .marquee-track {
             display: flex;
-            gap: 2rem;
+            gap: 4rem;
             width: max-content;
-            animation: scrollMarquee 15s linear infinite;
+            animation: scrollMarquee 25s linear infinite;
         }
 
         .marquee-track:hover {
             animation-play-state: paused;
         }
 
-        .logo-transparent {
+        /* Remove o fundo branco/escuro das imagens e integra perfeitamente no fundo escuro */
+        .transparent-logo {
             mix-blend-mode: screen;
-            filter: contrast(120%) brightness(1.2);
+            filter: contrast(130%) brightness(1.2);
         }
     </style>
 </head>
@@ -68,7 +69,7 @@
     <header class="fixed w-full top-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-sm border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 sm:h-24 flex items-center justify-between">
             <a href="#" class="flex items-center">
-                <img src="logo.png" alt="JHVISUALRP Logo" class="h-12 sm:h-16 md:h-20 w-auto object-contain logo-transparent">
+                <img src="logo.png" alt="JHVISUALRP Logo" class="h-12 sm:h-16 md:h-20 w-auto object-contain transparent-logo">
             </a>
             <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-300">
                 <a href="#marcas" class="hover:text-white transition">Marcas</a>
@@ -106,45 +107,45 @@
             </div>
         </section>
 
-        <!-- CARROSSEL CONTÍNUO DE MARCAS (sabores.png e mev.png em movimento constante) -->
-        <section id="marcas" class="py-16 bg-[#0e0e0e] border-y border-gray-900 overflow-hidden">
+        <!-- CARROSSEL CONTÍNUO SEM BORDAS E COM TRANSPARÊNCIA -->
+        <section id="marcas" class="py-16 bg-[#0a0a0a] border-y border-gray-900/50 overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 mb-8 text-center">
                 <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase">Marcas em Destaque</p>
             </div>
             
             <div class="marquee-container">
                 <div class="marquee-track">
-                    <!-- Bloco 1 -->
-                    <div class="flex items-center gap-8">
-                        <div class="flex items-center gap-4 bg-[#141414] px-8 py-5 rounded-2xl border border-gray-800 shadow-xl min-w-[280px] justify-center">
-                            <img src="sabores.png" alt="Sabores di Casa" class="h-12 w-auto object-contain logo-transparent">
-                            <span class="text-lg font-bold tracking-wide text-white">Sabores di Casa</span>
+                    <!-- Sequência 1 -->
+                    <div class="flex items-center gap-16">
+                        <div class="flex items-center gap-6">
+                            <img src="sabores.png" alt="Sabores di Casa" class="h-14 sm:h-16 w-auto object-contain transparent-logo">
+                            <span class="text-xl sm:text-2xl font-bold tracking-wide text-white">Sabores di Casa</span>
                         </div>
-                        <div class="flex items-center gap-4 bg-[#141414] px-8 py-5 rounded-2xl border border-gray-800 shadow-xl min-w-[280px] justify-center">
-                            <img src="mev.png" alt="MEV" class="h-10 w-auto object-contain logo-transparent">
-                            <span class="text-lg font-bold tracking-wide text-white">MEV</span>
-                        </div>
-                    </div>
-                    <!-- Bloco 2 (Duplicado para criar o efeito contínuo infinito) -->
-                    <div class="flex items-center gap-8">
-                        <div class="flex items-center gap-4 bg-[#141414] px-8 py-5 rounded-2xl border border-gray-800 shadow-xl min-w-[280px] justify-center">
-                            <img src="sabores.png" alt="Sabores di Casa" class="h-12 w-auto object-contain logo-transparent">
-                            <span class="text-lg font-bold tracking-wide text-white">Sabores di Casa</span>
-                        </div>
-                        <div class="flex items-center gap-4 bg-[#141414] px-8 py-5 rounded-2xl border border-gray-800 shadow-xl min-w-[280px] justify-center">
-                            <img src="mev.png" alt="MEV" class="h-10 w-auto object-contain logo-transparent">
-                            <span class="text-lg font-bold tracking-wide text-white">MEV</span>
+                        <div class="flex items-center gap-6">
+                            <img src="mev.png" alt="MEV" class="h-12 sm:h-14 w-auto object-contain transparent-logo">
+                            <span class="text-xl sm:text-2xl font-bold tracking-wide text-white">MEV</span>
                         </div>
                     </div>
-                    <!-- Bloco 3 (Garante transição perfeita sem falhas) -->
-                    <div class="flex items-center gap-8">
-                        <div class="flex items-center gap-4 bg-[#141414] px-8 py-5 rounded-2xl border border-gray-800 shadow-xl min-w-[280px] justify-center">
-                            <img src="sabores.png" alt="Sabores di Casa" class="h-12 w-auto object-contain logo-transparent">
-                            <span class="text-lg font-bold tracking-wide text-white">Sabores di Casa</span>
+                    <!-- Sequência 2 (Looping contínuo) -->
+                    <div class="flex items-center gap-16">
+                        <div class="flex items-center gap-6">
+                            <img src="sabores.png" alt="Sabores di Casa" class="h-14 sm:h-16 w-auto object-contain transparent-logo">
+                            <span class="text-xl sm:text-2xl font-bold tracking-wide text-white">Sabores di Casa</span>
                         </div>
-                        <div class="flex items-center gap-4 bg-[#141414] px-8 py-5 rounded-2xl border border-gray-800 shadow-xl min-w-[280px] justify-center">
-                            <img src="mev.png" alt="MEV" class="h-10 w-auto object-contain logo-transparent">
-                            <span class="text-lg font-bold tracking-wide text-white">MEV</span>
+                        <div class="flex items-center gap-6">
+                            <img src="mev.png" alt="MEV" class="h-12 sm:h-14 w-auto object-contain transparent-logo">
+                            <span class="text-xl sm:text-2xl font-bold tracking-wide text-white">MEV</span>
+                        </div>
+                    </div>
+                    <!-- Sequência 3 (Garante fluidez total) -->
+                    <div class="flex items-center gap-16">
+                        <div class="flex items-center gap-6">
+                            <img src="sabores.png" alt="Sabores di Casa" class="h-14 sm:h-16 w-auto object-contain transparent-logo">
+                            <span class="text-xl sm:text-2xl font-bold tracking-wide text-white">Sabores di Casa</span>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <img src="mev.png" alt="MEV" class="h-12 sm:h-14 w-auto object-contain transparent-logo">
+                            <span class="text-xl sm:text-2xl font-bold tracking-wide text-white">MEV</span>
                         </div>
                     </div>
                 </div>
@@ -220,7 +221,7 @@
     <footer id="contato" class="bg-[#050505] py-12 sm:py-16 px-4 sm:px-6 border-t border-gray-900">
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
             <div>
-                <img src="logo.png" alt="JHVISUALRP Logo" class="h-16 sm:h-20 w-auto object-contain logo-transparent mb-6">
+                <img src="logo.png" alt="JHVISUALRP Logo" class="h-16 sm:h-20 w-auto object-contain transparent-logo mb-6">
                 <p class="text-gray-400 text-sm sm:text-base max-w-sm">O meu foco é criar projetos autênticos a partir do zero, focados exatamente no que você precisa comunicar.</p>
             </div>
             <div>
