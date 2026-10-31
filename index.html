@@ -112,6 +112,7 @@
                 <img src="logo.png" alt="JHVISUALRP Logo" class="h-12 sm:h-16 md:h-20 w-auto object-contain">
             </a>
             <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-300">
+                <a href="#videos" class="hover:text-white transition">Vídeos</a>
                 <a href="#servicos" class="hover:text-white transition">Serviços</a>
                 <a href="#projetos" class="hover:text-white transition">Portfólio</a>
                 <a href="#marcas" class="hover:text-white transition">Marcas</a>
@@ -124,7 +125,7 @@
     </header>
 
     <main>
-        <!-- HERO SECTION ORIGINAL -->
+        <!-- HERO SECTION ORIGINAL NO TOPO -->
         <section class="relative h-screen flex flex-col justify-center px-4 sm:px-6 pt-20 overflow-hidden">
             <div class="absolute inset-0 bg-3d-motion z-0"></div>
 
@@ -143,6 +144,28 @@
                     <a href="#projetos" class="px-6 sm:px-8 py-3.5 sm:py-4 bg-transparent border border-gray-600 text-white text-center text-sm sm:text-base font-semibold rounded-full hover:border-white transition">
                         Ver portfólio
                     </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECÇÃO DOS 3 VÍDEOS LOGO ABAIXO DA HERO -->
+        <section id="videos" class="py-24 sm:py-32 px-4 sm:px-6 bg-[#0a0a0a]">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-14">
+                    <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3">Destaque em Vídeo</p>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold">Produção Audiovisual Cinematográfica.</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="relative overflow-hidden rounded-2xl aspect-[9/16] bg-[#111] shadow-2xl group">
+                        <video src="video1.mp4.mp4" autoplay muted loop playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"></video>
+                    </div>
+                    <div class="relative overflow-hidden rounded-2xl aspect-[9/16] bg-[#111] shadow-2xl group">
+                        <video src="video2.mp4.mp4" autoplay muted loop playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"></video>
+                    </div>
+                    <div class="relative overflow-hidden rounded-2xl aspect-[9/16] bg-[#111] shadow-2xl group">
+                        <video src="video3.mp4.mp4" autoplay muted loop playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"></video>
+                    </div>
                 </div>
             </div>
         </section>
@@ -242,48 +265,4 @@
         <section class="hidden py-12 px-6 bg-gray-900 border-y border-gray-800">
             <div class="max-w-7xl mx-auto">
                 <h3 class="text-lg font-bold mb-2">Supabase</h3>
-                <ul id="lista-mensagens" class="text-green-400 text-sm">A carregar...</ul>
-            </div>
-        </section>
-    </main>
-
-    <!-- RODAPÉ -->
-    <footer id="contato" class="bg-[#050505] py-16 px-4 sm:px-6 border-t border-gray-900">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <img src="logo.png" alt="JHVISUALRP Logo" class="h-16 sm:h-20 w-auto object-contain mb-6">
-                <p class="text-gray-400 text-sm sm:text-base max-w-sm">O meu foco é criar projetos autênticos a partir do zero, focados exatamente no que você precisa comunicar.</p>
-            </div>
-            <div>
-                <h3 class="font-bold mb-4 text-white">Contato</h3>
-                <div class="flex flex-col gap-2 text-gray-400 text-sm sm:text-base">
-                    <a href="https://instagram.com/jhvisualrp" target="_blank" class="hover:text-white">Instagram: @jhvisualrp</a>
-                    <a href="mailto:contato@jhvisualrp.com.br" class="hover:text-white">Email: contato@jhvisualrp.com.br</a>
-                    <a href="https://wa.me/5516982055971" target="_blank" class="hover:text-white">WhatsApp: (16) 98205-5971</a>
-                    <p class="mt-2 text-sm">Ribeirão Preto, SP</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- SCRIPT SUPABASE -->
-    <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            const lista = document.getElementById('lista-mensagens');
-            const supabaseUrl = 'https://qeykaxyclbknshzhykyo.supabase.co';
-            const supabaseKey = 'sb_publishable_U9rAFsAiHONYvWFIbzftsQ_mB1LeBv8';
-
-            try {
-                const dbClient = supabase.createClient(supabaseUrl, supabaseKey);
-                const { data, error } = await dbClient.from('mensagens').select('*');
-                if (error) return;
-                if (data && data.length > 0) {
-                    console.log("Supabase conectado com sucesso!");
-                }
-            } catch (erro) {
-                console.error("Erro Supabase:", erro);
-            }
-        });
-    </script>
-</body>
-</html>
+                <ul id="lista-mensagens" class="text-green-400 text-sm">
