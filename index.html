@@ -21,10 +21,13 @@
 </head>
 <body>
 
-    <!-- CABEÇALHO -->
+    <!-- CABEÇALHO COM A LOGO -->
     <header class="fixed w-full top-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-sm border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="text-2xl font-bold tracking-tighter text-white">JHVISUAL<span class="text-gray-500">RP</span></a>
+            <a href="#" class="flex items-center">
+                <!-- Aqui entra a tua logo (certifica-te que o ficheiro se chama logo.png) -->
+                <img src="logo.png" alt="JHVISUALRP Logo" class="h-10 md:h-12 w-auto object-contain">
+            </a>
             <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-300">
                 <a href="#servicos" class="hover:text-white transition">Serviços</a>
                 <a href="#processo" class="hover:text-white transition">Como Trabalho</a>
@@ -116,22 +119,22 @@
                 
                 <!-- Grade com as 6 fotos -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square">
+                    <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
                         <img src="p1.jpg" alt="Trabalho JHVISUALRP" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
-                    <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square">
+                    <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
                         <img src="p2.jpg" alt="Trabalho JHVISUALRP" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
-                    <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square">
+                    <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
                         <img src="p3.jpg" alt="Trabalho JHVISUALRP" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
-                    <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square">
+                    <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
                         <img src="p4.jpg" alt="Trabalho JHVISUALRP" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
-                    <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square">
+                    <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
                         <img src="p5.jpg" alt="Trabalho JHVISUALRP" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
-                    <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square">
+                    <div class="overflow-hidden rounded-lg group cursor-pointer aspect-square bg-[#111]">
                         <img src="p6.jpg" alt="Trabalho JHVISUALRP" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                     </div>
                 </div>
@@ -144,7 +147,7 @@
             </div>
         </section>
 
-        <!-- TESTE SUPABASE OCULTO (A classe 'hidden' esconde a seção visualmente, mas o script continua rodando) -->
+        <!-- TESTE SUPABASE OCULTO -->
         <section class="hidden py-12 px-6 bg-gray-900 border-y border-gray-800">
             <div class="max-w-7xl mx-auto">
                 <h3 class="text-lg font-bold mb-2">Painel de Teste (Supabase)</h3>
@@ -153,20 +156,20 @@
         </section>
     </main>
 
-    <!-- RODAPÉ -->
+    <!-- RODAPÉ COM A LOGO -->
     <footer id="contato" class="bg-[#050505] py-16 px-6 border-t border-gray-900">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <div>
-                <h2 class="text-3xl font-bold mb-6">JHVISUALRP</h2>
-                <p class="text-gray-400 max-w-sm mb-6">O meu foco é criar projetos autênticos a partir do zero, focados exatamente no que você precisa comunicar.</p>
+                <img src="logo.png" alt="JHVISUALRP Logo" class="h-10 w-auto object-contain mb-6">
+                <p class="text-gray-400 max-w-sm">O meu foco é criar projetos autênticos a partir do zero, focados exatamente no que você precisa comunicar.</p>
             </div>
             <div>
-                <h3 class="font-bold mb-4">Contato</h3>
+                <h3 class="font-bold mb-4 text-white">Contato</h3>
                 <div class="flex flex-col gap-2 text-gray-400">
                     <a href="https://instagram.com/jhvisualrp" target="_blank" class="hover:text-white">Instagram: @jhvisualrp</a>
                     <a href="mailto:contato@jhvisualrp.com.br" class="hover:text-white">Email: contato@jhvisualrp.com.br</a>
                     <a href="https://wa.me/5516982055971" target="_blank" class="hover:text-white">WhatsApp: (16) 98205-5971</a>
-                    <p class="mt-4">Ribeirão Preto, SP</p>
+                    <p class="mt-4 text-sm">Ribeirão Preto, SP</p>
                 </div>
             </div>
         </div>
@@ -176,23 +179,19 @@
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const lista = document.getElementById('lista-mensagens');
-            
             const supabaseUrl = 'https://qeykaxyclbknshzhykyo.supabase.co';
             const supabaseKey = 'sb_publishable_U9rAFsAiHONYvWFIbzftsQ_mB1LeBv8';
 
             try {
                 const dbClient = supabase.createClient(supabaseUrl, supabaseKey);
                 const { data, error } = await dbClient.from('mensagens').select('*');
-                
                 lista.innerHTML = ''; 
-
                 if (error) {
                     console.error("Erro na tabela:", error.message);
                     return;
                 }
-
                 if (data && data.length > 0) {
-                    console.log("Supabase conectado! Mensagens recebidas:", data);
+                    console.log("Supabase conectado com sucesso!");
                 }
             } catch (erro) {
                 console.error("Falha de conexão com Supabase:", erro);
