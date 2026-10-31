@@ -32,7 +32,7 @@
             will-change: transform;
         }
 
-        /* Carrossel Infinito Verdadeiro e Contínuo (Sem paragens) */
+        /* Carrossel Infinito Fluido e Contínuo */
         .marquee-section {
             background: #0a0a0a;
             overflow: hidden;
@@ -48,7 +48,7 @@
             content: '';
             position: absolute;
             top: 0;
-            width: 120px;
+            width: 100px;
             height: 100%;
             z-index: 2;
             pointer-events: none;
@@ -67,7 +67,7 @@
         .marquee-track {
             display: flex;
             width: max-content;
-            animation: scrollLoop 20s linear infinite;
+            animation: scrollLoop 15s linear infinite;
         }
 
         .marquee-track:hover {
@@ -83,22 +83,24 @@
             display: flex;
             align-items: center;
             justify-content: space-around;
-            gap: 6rem;
+            gap: 4rem; /* Distância reduzida para ficarem mais próximas */
             min-width: 100%;
+            padding: 0 2rem;
         }
 
         .brand-item {
             display: flex;
             align-items: center;
-            gap: 1.25rem;
+            gap: 1rem;
         }
 
+        /* Remove fundos brancos/pretos e deixa as logos perfeitamente transparentes */
         .brand-logo {
-            height: 48px;
+            height: 44px;
             width: auto;
             object-fit: contain;
-            mix-blend-mode: screen; /* Remove fundos pretos/escuros das logos */
-            filter: contrast(120%) brightness(1.1);
+            mix-blend-mode: screen;
+            filter: contrast(130%) brightness(1.2);
         }
     </style>
 </head>
@@ -146,7 +148,7 @@
             </div>
         </section>
 
-        <!-- CARROSSEL INFINITO COM LOGOS, NOMES E TRANSPARÊNCIA -->
+        <!-- CARROSSEL INFINITO COM LOGOS TRANSPARENTES E APROXIMADAS -->
         <section id="marcas" class="marquee-section">
             <div class="max-w-7xl mx-auto px-4 mb-4 text-center">
                 <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase">Marcas em Destaque</p>
@@ -164,7 +166,7 @@
                         <span class="text-lg font-bold tracking-wide text-white">MEV</span>
                     </div>
                 </div>
-                <!-- Grupo 2 (Cópia exata para garantir o loop infinito sem interrupções) -->
+                <!-- Grupo 2 (Cópia exata para o loop contínuo infinito) -->
                 <div class="marquee-group" aria-hidden="true">
                     <div class="brand-item">
                         <img src="sabores.png" alt="Sabores di Casa" class="brand-logo">
