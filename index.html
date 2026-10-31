@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-PT" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,17 +69,17 @@
                     <article class="border-t border-gray-800 pt-8">
                         <span class="text-gray-600 text-sm font-bold block mb-4">01</span>
                         <h3 class="text-2xl font-bold mb-4">Reels para Redes Sociais</h3>
-                        <p class="text-gray-400 mb-6">Conteúdo em vídeo para apresentar seu trabalho e conversar com seu público. A gente prepara o roteiro, dirige a gravação e entrega os Reels editados.</p>
+                        <p class="text-gray-400 mb-6">Conteúdo em vídeo para apresentar o seu trabalho e conversar com o seu público. Nós preparamos o roteiro, dirigimos a gravação e entregamos os Reels editados.</p>
                     </article>
                     <article class="border-t border-gray-800 pt-8">
                         <span class="text-gray-600 text-sm font-bold block mb-4">02</span>
                         <h3 class="text-2xl font-bold mb-4">Vídeos Institucionais</h3>
-                        <p class="text-gray-400 mb-6">Para apresentar sua empresa e sua equipe. Do roteiro à finalização, cada etapa parte da mensagem que sua marca precisa comunicar.</p>
+                        <p class="text-gray-400 mb-6">Para apresentar a sua empresa e a sua equipa. Do roteiro à finalização, cada etapa parte da mensagem que a sua marca precisa de comunicar.</p>
                     </article>
                     <article class="border-t border-gray-800 pt-8">
                         <span class="text-gray-600 text-sm font-bold block mb-4">03</span>
                         <h3 class="text-2xl font-bold mb-4">Produto e Gastronomia</h3>
-                        <p class="text-gray-400 mb-6">Vídeos que mostram os detalhes do que você oferece: textura, movimento, preparo e experiência.</p>
+                        <p class="text-gray-400 mb-6">Vídeos que mostram os detalhes do que oferece: textura, movimento, preparo e experiência.</p>
                     </article>
                 </div>
             </div>
@@ -94,26 +94,26 @@
                 <div class="grid md:grid-cols-3 gap-8">
                     <div class="bg-[#1a1a1a] p-8 rounded-2xl">
                         <h3 class="text-xl font-bold text-white mb-2">1. Briefing</h3>
-                        <p class="text-gray-400">Entendemos sua marca, o que você vende e pra quem. A partir daí, traçamos a rota.</p>
+                        <p class="text-gray-400">Entendemos a sua marca, o que vende e para quem. A partir daí, traçamos a rota.</p>
                     </div>
                     <div class="bg-[#1a1a1a] p-8 rounded-2xl">
                         <h3 class="text-xl font-bold text-white mb-2">2. Produção</h3>
-                        <p class="text-gray-400">Roteiro, captação e direção. Cada detalhe pensado antes de ligar a câmera.</p>
+                        <p class="text-gray-400">Roteiro, captação e direção. Cada detalhe é pensado antes de ligar a câmara.</p>
                     </div>
                     <div class="bg-[#1a1a1a] p-8 rounded-2xl">
                         <h3 class="text-xl font-bold text-white mb-2">3. Entrega</h3>
-                        <p class="text-gray-400">Edição, cor e finalização. Você recebe o vídeo pronto com alta qualidade cinematográfica.</p>
+                        <p class="text-gray-400">Edição, cor e finalização. Recebe o vídeo pronto com alta qualidade cinematográfica.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- TESTE SUPABASE (Deixei oculto visualmente no final, mas funcional para seu painel) -->
+        <!-- TESTE SUPABASE -->
         <section class="py-12 px-6 bg-gray-900 border-y border-gray-800">
             <div class="max-w-7xl mx-auto">
                 <h3 class="text-lg font-bold mb-2">Painel de Teste (Supabase)</h3>
-                <p class="text-sm text-gray-400 mb-4">Status de conexão com o banco de dados:</p>
-                <ul id="lista-mensagens" class="text-green-400 text-sm">Carregando...</ul>
+                <p class="text-sm text-gray-400 mb-4">Status de ligação com a base de dados:</p>
+                <ul id="lista-mensagens" class="text-green-400 text-sm">A carregar...</ul>
             </div>
         </section>
     </main>
@@ -123,7 +123,7 @@
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
             <div>
                 <h2 class="text-3xl font-bold mb-6">JHVISUALRP</h2>
-                <p class="text-gray-400 max-w-sm mb-6">A diferença é que aqui cada projeto começa do zero, focado no que você precisa comunicar.</p>
+                <p class="text-gray-400 max-w-sm mb-6">A diferença é que aqui cada projeto começa do zero, focado no que precisa de comunicar.</p>
             </div>
             <div>
                 <h3 class="font-bold mb-4">Contato</h3>
@@ -137,11 +137,10 @@
         </div>
     </footer>
 
-    <!-- SCRIPT DE CONEXÃO DO SUPABASE -->
+    <!-- SCRIPT DE LIGAÇÃO AO SUPABASE -->
     <script>
-        // COLE SUAS CHAVES AQUI NOVAMENTE
-        const supabaseUrl = 'COLE_SUA_PROJECT_URL_AQUI';
-        const supabaseKey = 'COLE_SUA_CHAVE_ANON_AQUI';
+        const supabaseUrl = 'https://qeykaxyclbknshzhykyo.supabase.co';
+        const supabaseKey = 'sb_publishable_U9rAFsAiHONYvWFIbzftsQ_mB1LeBv8';
         
         const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
@@ -151,7 +150,7 @@
             lista.innerHTML = ''; 
 
             if (error) {
-                lista.innerHTML = '<li class="text-red-500">Erro ao conectar com o banco. Verifique as chaves.</li>';
+                lista.innerHTML = '<li class="text-red-500">Erro ao ligar à base de dados. Verifique as chaves.</li>';
                 return;
             }
 
@@ -162,8 +161,7 @@
             });
         }
 
-        // Se você já tem a URL e a Chave, descomente a linha abaixo para executar
-        // carregarDados();
+        carregarDados();
     </script>
 </body>
 </html>
