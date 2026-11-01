@@ -17,6 +17,21 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #f3f4f6; }
         
+        /* Efeito do Flash de Estúdio na Abertura */
+        #camera-flash {
+            position: fixed;
+            inset: 0;
+            background-color: #ffffff;
+            z-index: 99999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease-out;
+        }
+
+        #camera-flash.flash-active {
+            opacity: 1;
+        }
+
         /* Efeito 3D de profundidade e movimento contínuo no fundo da Hero */
         @keyframes float3D {
             0% { transform: scale(1) translate(0px, 0px) rotate(0deg); }
@@ -104,6 +119,9 @@
     </style>
 </head>
 <body>
+
+    <!-- EFEITO DE FLASH DA CÂMARA -->
+    <div id="camera-flash"></div>
 
     <!-- CABEÇALHO -->
     <header class="fixed w-full top-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-sm border-b border-gray-800">
@@ -295,7 +313,7 @@
         </section>
     </main>
 
-    <!-- RODAPÉ COM ÍCONES UNIFORMES E ALINHADOS -->
+    <!-- RODAPÉ -->
     <footer id="contato" class="bg-[#050505] py-16 px-4 sm:px-6 border-t border-gray-900">
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -330,8 +348,62 @@
         </div>
     </footer>
 
-    <!-- SCRIPT DO MENU MOBILE E SUPABASE -->
+    <!-- SCRIPT DE INTERAÇÃO, MENU, SUPABASE E EFEITO DE FLASH COM SOM -->
     <script>
+        // Efeito de Flash e Som de Câmara na Abertura
+        window.addEventListener('DOMContentLoaded', () => {
+            const flash = document.getElementById('camera-flash');
+            
+            // Toca o som do obturador sintetizado via Audio API para funcionar sem ficheiro externo de áudio
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                
+                function playCameraClick() {
+                    if (!audioCtx) return;
+                    if (audioCtx.state === 'suspended') {
+                        audioCtx.resume();
+                    }
+                    // Ruído branco curto simulando o obturador
+                    const bufferSize = audioCtx.sampleRate * 0.08;
+                    const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+                    const output = buffer.getChannelData(0);
+                    for (let i = 0; i < bufferSize; i++) {
+                        output[i] = Math.random() * 2 - 1;
+                    }
+                    
+                    const whiteNoise = audioCtx.createBufferSource();
+                    whiteNoise.buffer = buffer;
+                    
+                    const filter = audioCtx.createBiquadFilter();
+                    filter.type = 'highpass';
+                    filter.frequency.value = 1000;
+                    
+                    const gain = audioCtx.createGain();
+                    gain.gain.setValueAtTime(0.5, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
+                    
+                    whiteNoise.connect(filter);
+                    filter.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    
+                    whiteNoise.start();
+                }
+                
+                playCameraClick();
+            } catch (e) {
+                console.log("Áudio bloqueado pelo navegador até primeira interação.");
+            }
+
+            // Ativa o clarão branco do flash
+            setTimeout(() => {
+                flash.classList.add('flash-active');
+                setTimeout(() => {
+                    flash.classList.remove('flash-active');
+                }, 200);
+            }, 100);
+        });
+
+        // Menu Mobile
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -346,6 +418,7 @@
             });
         });
 
+        // Supabase
         document.addEventListener('DOMContentLoaded', async () => {
             const supabaseUrl = 'https://qeykaxyclbknshzhykyo.supabase.co';
             const supabaseKey = 'sb_publishable_U9rAFsAiHONYvWFIbzftsQ_mB1LeBv8';
