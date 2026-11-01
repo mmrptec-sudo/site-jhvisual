@@ -17,6 +17,41 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #f3f4f6; overflow-x: hidden; }
         
+        /* Intro Segura com Vídeo e Botão de Acesso */
+        #intro-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: #000000;
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+        }
+
+        #intro-overlay.fade-out {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        #intro-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .intro-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
         /* Efeito 3D de profundidade e movimento contínuo no fundo da Hero */
         @keyframes float3D {
             0% { transform: scale(1) translate(0px, 0px) rotate(0deg); }
@@ -138,6 +173,16 @@
 </head>
 <body>
 
+    <!-- INTRO CINEMATOGRÁFICA SEGURA COM BOTÃO DE ENTRAR (GARANTE QUE NUNCA FICA PRETO) -->
+    <div id="intro-overlay">
+        <video id="intro-video" src="intro.mp4" autoplay muted playsinline></video>
+        <div class="intro-content">
+            <button id="enter-btn" class="px-8 py-4 bg-white text-black font-semibold rounded-full shadow-2xl hover:bg-gray-200 transition transform hover:scale-105">
+                Entrar no Site
+            </button>
+        </div>
+    </div>
+
     <!-- CABEÇALHO -->
     <header class="fixed w-full top-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-sm border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 sm:h-24 flex items-center justify-between">
@@ -214,7 +259,7 @@
                     <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold">Produção Audiovisual Cinematográfica.</h2>
                 </div>
 
-                <div class="mobile-video-scroll">
+                <div id="video-scroll-container" class="mobile-video-scroll">
                     <div class="mobile-video-item relative overflow-hidden rounded-2xl aspect-[9/16] bg-[#111] shadow-2xl group shrink-0">
                         <video src="video1.mp4.mp4" autoplay muted loop playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"></video>
                     </div>
@@ -226,11 +271,11 @@
                     </div>
                 </div>
 
-                <!-- Indicadores de deslize para telemóvel -->
-                <div class="flex justify-center items-center gap-2 mt-6 md:hidden">
-                    <span class="w-6 h-1.5 bg-white rounded-full"></span>
-                    <span class="w-2 h-1.5 bg-gray-700 rounded-full"></span>
-                    <span class="w-2 h-1.5 bg-gray-700 rounded-full"></span>
+                <!-- Botões / Indicadores interativos de deslize -->
+                <div class="flex justify-center items-center gap-3 mt-6 md:hidden">
+                    <button class="dot-btn w-6 h-2 bg-white rounded-full transition-all" data-index="0"></button>
+                    <button class="dot-btn w-2 h-2 bg-gray-700 rounded-full transition-all" data-index="1"></button>
+                    <button class="dot-btn w-2 h-2 bg-gray-700 rounded-full transition-all" data-index="2"></button>
                 </div>
             </div>
         </section>
@@ -370,8 +415,60 @@
         </div>
     </footer>
 
-    <!-- SCRIPT DO MENU MOBILE E SUPABASE -->
+    <!-- SCRIPT DE INTRO, MENU E BOTÕES DE VÍDEO -->
     <script>
+        // Intro com Botão de Acesso e Salvaguarda
+        window.addEventListener('DOMContentLoaded', () => {
+            const introOverlay = document.getElementById('intro-overlay');
+            const introVideo = document.getElementById('intro-video');
+            const enterBtn = document.getElementById('enter-btn');
+            let isHidden = false;
+
+            function hideIntro() {
+                if (isHidden) return;
+                isHidden = true;
+                if (introOverlay) {
+                    introOverlay.classList.add('fade-out');
+                    setTimeout(() => {
+                        introOverlay.remove();
+                    }, 800);
+                }
+            }
+
+            if (enterBtn) {
+                enterBtn.addEventListener('click', hideIntro);
+            }
+
+            if (introVideo) {
+                introVideo.addEventListener('ended', hideIntro);
+                introVideo.addEventListener('error', hideIntro);
+            }
+
+            // Salvaguarda máxima: fecha a intro aos 6.5 segundos caso o vídeo demore
+            setTimeout(hideIntro, 6500);
+        });
+
+        // Controlo dos botões/indicadores e scroll dos vídeos no telemóvel
+        const scrollContainer = document.getElementById('video-scroll-container');
+        const dotBtns = document.querySelectorAll('.dot-btn');
+
+        if (scrollContainer && dotBtns.length > 0) {
+            dotBtns.forEach((btn, index) => {
+                btn.addEventListener('click', () => {
+                    const targetItem = scrollContainer.children[index];
+                    if (targetItem) {
+                        targetItem.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                    }
+                    dotBtns.forEach(b => {
+                        b.classList.remove('w-6', 'bg-white');
+                        b.classList.add('w-2', 'bg-gray-700');
+                    });
+                    btn.classList.remove('w-2', 'bg-gray-700');
+                    btn.classList.add('w-6', 'bg-white');
+                });
+            });
+        }
+
         // Menu Mobile
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
