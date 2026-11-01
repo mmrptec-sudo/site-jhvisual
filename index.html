@@ -15,21 +15,30 @@
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #f3f4f6; }
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #f3f4f6; overflow-x: hidden; }
         
-        /* Efeito do Flash de Estúdio na Abertura */
-        #camera-flash {
+        /* Ecrã de Intro com o Vídeo da Câmara */
+        #intro-overlay {
             position: fixed;
             inset: 0;
-            background-color: #ffffff;
+            background-color: #000000;
             z-index: 99999;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
         }
 
-        #camera-flash.flash-active {
-            opacity: 1;
+        #intro-overlay.fade-out {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        #intro-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* Efeito 3D de profundidade e movimento contínuo no fundo da Hero */
@@ -120,8 +129,10 @@
 </head>
 <body>
 
-    <!-- EFEITO DE FLASH DA CÂMARA -->
-    <div id="camera-flash"></div>
+    <!-- INTRO COM O VÍDEO DA CÂMARA -->
+    <div id="intro-overlay">
+        <video id="intro-video" src="intro.mp4" autoplay muted playsinline></video>
+    </div>
 
     <!-- CABEÇALHO -->
     <header class="fixed w-full top-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-sm border-b border-gray-800">
@@ -230,8 +241,8 @@
 
                     <article class="p-8 sm:p-10 rounded-2xl bg-[#121212]/80 border border-gray-800/80 hover:border-gray-500 transition duration-500 group">
                         <span class="text-gray-500 text-xs font-bold tracking-widest block mb-6">SERVIÇO 02</span>
-                        <h3 class="text-xl sm:text-2xl font-bold mb-4 text-white group-hover:text-gray-200 transition">Produção de Vídeo e Reels</h3>
-                        <p class="text-gray-400 text-sm sm:text-base leading-relaxed">Conteúdo dinâmico em vídeo para redes sociais e institucionais com padrão cinematográfico.</p>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-4 text-white group-hover:text-gray-200 transition">Vídeos e Reels Estratégicos</h3>
+                        <p class="text-gray-400 text-sm sm:text-base leading-relaxed">Conteúdo dinâmico em vídeo para redes sociais e institucionais, desenhado para conectar emocionalmente com o seu público.</p>
                     </article>
                 </div>
             </div>
@@ -348,59 +359,24 @@
         </div>
     </footer>
 
-    <!-- SCRIPT DE INTERAÇÃO, MENU, SUPABASE E EFEITO DE FLASH COM SOM -->
+    <!-- SCRIPT DE INTRO, MENU E SUPABASE -->
     <script>
-        // Efeito de Flash e Som de Câmara na Abertura
+        // Lógica do Vídeo Intro (Fecha assim que o vídeo acaba ou após 6 segundos)
         window.addEventListener('DOMContentLoaded', () => {
-            const flash = document.getElementById('camera-flash');
-            
-            // Toca o som do obturador sintetizado via Audio API para funcionar sem ficheiro externo de áudio
-            try {
-                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                
-                function playCameraClick() {
-                    if (!audioCtx) return;
-                    if (audioCtx.state === 'suspended') {
-                        audioCtx.resume();
-                    }
-                    // Ruído branco curto simulando o obturador
-                    const bufferSize = audioCtx.sampleRate * 0.08;
-                    const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-                    const output = buffer.getChannelData(0);
-                    for (let i = 0; i < bufferSize; i++) {
-                        output[i] = Math.random() * 2 - 1;
-                    }
-                    
-                    const whiteNoise = audioCtx.createBufferSource();
-                    whiteNoise.buffer = buffer;
-                    
-                    const filter = audioCtx.createBiquadFilter();
-                    filter.type = 'highpass';
-                    filter.frequency.value = 1000;
-                    
-                    const gain = audioCtx.createGain();
-                    gain.gain.setValueAtTime(0.5, audioCtx.currentTime);
-                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
-                    
-                    whiteNoise.connect(filter);
-                    filter.connect(gain);
-                    gain.connect(audioCtx.destination);
-                    
-                    whiteNoise.start();
+            const introOverlay = document.getElementById('intro-overlay');
+            const introVideo = document.getElementById('intro-video');
+
+            function hideIntro() {
+                if (!introOverlay.classList.contains('fade-out')) {
+                    introOverlay.classList.add('fade-out');
                 }
-                
-                playCameraClick();
-            } catch (e) {
-                console.log("Áudio bloqueado pelo navegador até primeira interação.");
             }
 
-            // Ativa o clarão branco do flash
-            setTimeout(() => {
-                flash.classList.add('flash-active');
-                setTimeout(() => {
-                    flash.classList.remove('flash-active');
-                }, 200);
-            }, 100);
+            // Quando o vídeo termina, desaparece a intro
+            introVideo.addEventListener('ended', hideIntro);
+
+            // Salvaguarda caso o vídeo demore ou falhe: desaparece no máximo aos 6.5 segundos
+            setTimeout(hideIntro, 6500);
         });
 
         // Menu Mobile
