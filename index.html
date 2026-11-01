@@ -56,7 +56,40 @@
             will-change: transform;
         }
 
-        /* Carrossel Infinito Fluido e Contínuo */
+        /* Carrossel de Vídeos para Telemóvel (Scroll Horizontal Fluido) */
+        .mobile-video-scroll {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 1rem;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .mobile-video-scroll::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
+
+        .mobile-video-item {
+            scroll-snap-align: center;
+            flex: 0 0 75%;
+            max-width: 280px;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-video-scroll {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                overflow-x: visible;
+                gap: 1.5rem;
+            }
+            .mobile-video-item {
+                flex: none;
+                max-width: none;
+            }
+        }
+
+        /* Carrossel Infinito de Marcas */
         .marquee-section {
             background: #050505;
             overflow: hidden;
@@ -202,7 +235,7 @@
             </div>
         </section>
 
-        <!-- SECÇÃO DE VÍDEOS -->
+        <!-- SECÇÃO DE VÍDEOS (OTIMIZADA PARA TELEMÓVEL EM CARROSSEL HORIZONTAL) -->
         <section id="videos" class="py-24 sm:py-32 px-4 sm:px-6 bg-[#0a0a0a]">
             <div class="max-w-7xl mx-auto">
                 <div class="mb-14">
@@ -210,14 +243,14 @@
                     <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold">Produção Audiovisual Cinematográfica.</h2>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="relative overflow-hidden rounded-2xl aspect-[9/16] bg-[#111] shadow-2xl group">
+                <div class="mobile-video-scroll">
+                    <div class="mobile-video-item relative overflow-hidden rounded-2xl aspect-[9/16] bg-[#111] shadow-2xl group shrink-0">
                         <video src="video1.mp4.mp4" autoplay muted loop playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"></video>
                     </div>
-                    <div class="relative overflow-hidden rounded-2xl aspect-[9/16] bg-[#111] shadow-2xl group">
+                    <div class="mobile-video-item relative overflow-hidden rounded-2xl aspect-[9/16] bg-[#111] shadow-2xl group shrink-0">
                         <video src="video2.mp4.mp4" autoplay muted loop playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"></video>
                     </div>
-                    <div class="relative overflow-hidden rounded-2xl aspect-[9/16] bg-[#111] shadow-2xl group">
+                    <div class="mobile-video-item relative overflow-hidden rounded-2xl aspect-[9/16] bg-[#111] shadow-2xl group shrink-0">
                         <video src="video3.mp4.mp4" autoplay muted loop playsinline class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"></video>
                     </div>
                 </div>
@@ -359,24 +392,30 @@
         </div>
     </footer>
 
-    <!-- SCRIPT DE INTRO, MENU E SUPABASE -->
+    <!-- SCRIPT DE INTRO COM SALVAGUARDA -->
     <script>
-        // Lógica do Vídeo Intro (Fecha assim que o vídeo acaba ou após 6 segundos)
         window.addEventListener('DOMContentLoaded', () => {
             const introOverlay = document.getElementById('intro-overlay');
             const introVideo = document.getElementById('intro-video');
+            let isHidden = false;
 
             function hideIntro() {
-                if (!introOverlay.classList.contains('fade-out')) {
+                if (isHidden) return;
+                isHidden = true;
+                if (introOverlay) {
                     introOverlay.classList.add('fade-out');
+                    setTimeout(() => {
+                        introOverlay.remove();
+                    }, 800);
                 }
             }
 
-            // Quando o vídeo termina, desaparece a intro
-            introVideo.addEventListener('ended', hideIntro);
+            if (introVideo) {
+                introVideo.addEventListener('ended', hideIntro);
+                introVideo.addEventListener('error', hideIntro);
+            }
 
-            // Salvaguarda caso o vídeo demore ou falhe: desaparece no máximo aos 6.5 segundos
-            setTimeout(hideIntro, 6500);
+            setTimeout(hideIntro, 6000);
         });
 
         // Menu Mobile
@@ -384,28 +423,25 @@
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
             });
-        });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
 
         // Supabase
         document.addEventListener('DOMContentLoaded', async () => {
-            const supabaseUrl = 'https://qeykaxyclbknshzhykyo.supabase.co';
-            const supabaseKey = 'sb_publishable_U9rAFsAiHONYvWFIbzftsQ_mB1LeBv8';
-
             try {
+                const supabaseUrl = 'https://qeykaxyclbknshzhykyo.supabase.co';
+                const supabaseKey = 'sb_publishable_U9rAFsAiHONYvWFIbzftsQ_mB1LeBv8';
                 const dbClient = supabase.createClient(supabaseUrl, supabaseKey);
-                const { data, error } = await dbClient.from('mensagens').select('*');
-                if (error) return;
-                if (data && data.length > 0) {
-                    console.log("Supabase conectado com sucesso!");
-                }
+                await dbClient.from('mensagens').select('*');
             } catch (erro) {
                 console.error("Erro Supabase:", erro);
             }
