@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JHVISUALRP | Fotografia e Vídeo</title>
+    <title>JHVISUALRP | Fotografia e Vídeo em Ribeirão Preto</title>
+    <meta name="description" content="Fotografia comercial, retratos, vídeos e Reels estratégicos em Ribeirão Preto. Conheça o trabalho da JH Visual e solicite um orçamento.">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="JHVISUALRP | Fotografia e Vídeo">
+    <meta property="og:description" content="Imagens cinematográficas para valorizar sua marca. Fotografia e produção audiovisual em Ribeirão Preto.">
+    <meta property="og:image" content="logo.png">
     
     <!-- FAVICON -->
     <link rel="icon" type="image/png" href="logo.png">
@@ -169,6 +175,105 @@
             mix-blend-mode: screen;
             filter: contrast(130%) brightness(1.2);
         }
+
+        /* Melhorias JH Visual 2.0 */
+        html { scroll-padding-top: 6rem; }
+        body { -webkit-font-smoothing: antialiased; }
+        a, button { -webkit-tap-highlight-color: transparent; }
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 4px;
+        }
+        .section-kicker { color: #a3a3a3; letter-spacing: .22em; }
+        .premium-card {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+        .premium-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            border: 1px solid rgba(255,255,255,.08);
+            pointer-events: none;
+            transition: border-color .35s ease;
+        }
+        .premium-card:hover::after { border-color: rgba(255,255,255,.32); }
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
+        }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .portfolio-item { cursor: zoom-in; }
+        .portfolio-item img { transition: transform .8s cubic-bezier(.2,.7,.2,1), filter .5s ease; }
+        .portfolio-item:hover img { transform: scale(1.07); filter: brightness(1.08); }
+        .portfolio-item::after {
+            content: "AMPLIAR";
+            position: absolute;
+            right: 1rem;
+            bottom: 1rem;
+            padding: .45rem .7rem;
+            border: 1px solid rgba(255,255,255,.35);
+            border-radius: 999px;
+            background: rgba(0,0,0,.55);
+            color: white;
+            font-size: .62rem;
+            letter-spacing: .16em;
+            opacity: 0;
+            transform: translateY(6px);
+            transition: .3s ease;
+        }
+        .portfolio-item:hover::after { opacity: 1; transform: translateY(0); }
+        #image-lightbox {
+            position: fixed; inset: 0; z-index: 100000;
+            display: none; align-items: center; justify-content: center;
+            padding: 1.5rem; background: rgba(0,0,0,.94);
+            backdrop-filter: blur(12px);
+        }
+        #image-lightbox.open { display: flex; }
+        #image-lightbox img {
+            max-width: min(1100px, 92vw); max-height: 84vh;
+            object-fit: contain; border-radius: 12px;
+            box-shadow: 0 25px 90px rgba(0,0,0,.6);
+        }
+        #lightbox-close {
+            position: absolute; top: 1.25rem; right: 1.25rem;
+            width: 44px; height: 44px; border-radius: 50%;
+            background: rgba(255,255,255,.12); color: white;
+            font-size: 1.6rem; line-height: 1;
+        }
+        .whatsapp-float {
+            position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 60;
+            display: inline-flex; align-items: center; gap: .65rem;
+            padding: .85rem 1.15rem; border-radius: 999px;
+            color: #07130b; background: #d9f99d;
+            font-size: .85rem; font-weight: 700;
+            box-shadow: 0 10px 35px rgba(0,0,0,.35);
+            transition: transform .25s ease, background .25s ease;
+        }
+        .whatsapp-float:hover { transform: translateY(-3px); background: #ecfccb; }
+        .cta-panel {
+            background:
+                radial-gradient(ellipse at 85% 20%, rgba(255,255,255,.12), transparent 42%),
+                linear-gradient(135deg, #171717, #080808 70%);
+        }
+        @media (max-width: 640px) {
+            .whatsapp-float { right: .85rem; bottom: .85rem; padding: .8rem 1rem; }
+            .whatsapp-float span { display: none; }
+            .portfolio-item::after { opacity: 1; transform: none; font-size: .55rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+            .reveal { opacity: 1; transform: none; }
+        }
+
     </style>
 </head>
 <body>
@@ -200,13 +305,13 @@
             </nav>
 
             <div class="hidden md:flex items-center gap-4">
-                <a href="https://wa.me/5516982055971" target="_blank" class="px-5 py-2.5 bg-white text-black text-sm font-semibold rounded-full hover:bg-gray-200 transition">
+                <a href="https://wa.me/5516982055971" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-white text-black text-sm font-semibold rounded-full hover:bg-gray-200 transition">
                     Orçamento
                 </a>
             </div>
 
             <!-- Botão Menu Mobile -->
-            <button id="menu-btn" class="md:hidden text-white focus:outline-none p-2">
+            <button id="menu-btn" type="button" aria-label="Abrir menu" aria-controls="mobile-menu" aria-expanded="false" class="md:hidden text-white focus:outline-none p-2">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
@@ -214,13 +319,13 @@
         </div>
 
         <!-- Menu Desdobrável Mobile -->
-        <div id="mobile-menu" class="hidden md:hidden bg-[#0a0a0a] border-b border-gray-800 px-6 py-6 flex flex-col gap-4">
+        <div id="mobile-menu" aria-label="Menu mobile" class="hidden md:hidden bg-[#0a0a0a] border-b border-gray-800 px-6 py-6 flex flex-col gap-4">
             <a href="#videos" class="mobile-link text-gray-300 hover:text-white text-lg font-medium">Vídeos</a>
             <a href="#servicos" class="mobile-link text-gray-300 hover:text-white text-lg font-medium">Serviços</a>
             <a href="#projetos" class="mobile-link text-gray-300 hover:text-white text-lg font-medium">Portfólio</a>
             <a href="#marcas" class="mobile-link text-gray-300 hover:text-white text-lg font-medium">Marcas</a>
             <a href="#contato" class="mobile-link text-gray-300 hover:text-white text-lg font-medium">Contato</a>
-            <a href="https://wa.me/5516982055971" target="_blank" class="mt-2 py-3 bg-white text-black text-center font-semibold rounded-full">
+            <a href="https://wa.me/5516982055971" target="_blank" rel="noopener noreferrer" class="mt-2 py-3 bg-white text-black text-center font-semibold rounded-full">
                 Pedir Orçamento
             </a>
         </div>
@@ -241,7 +346,7 @@
                     O caminho da sua marca começa aqui. Unimos a essência de projetos incríveis a imagens cinematográficas que convertem.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
-                    <a href="https://wa.me/5516982055971" target="_blank" class="px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-black text-center text-sm sm:text-base font-semibold rounded-full hover:bg-gray-200 transition shadow-lg">
+                    <a href="https://wa.me/5516982055971" target="_blank" rel="noopener noreferrer" class="px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-black text-center text-sm sm:text-base font-semibold rounded-full hover:bg-gray-200 transition shadow-lg">
                         Pedir um orçamento
                     </a>
                     <a href="#projetos" class="px-6 sm:px-8 py-3.5 sm:py-4 bg-[#111]/80 backdrop-blur-md border border-gray-600 text-white text-center text-sm sm:text-base font-semibold rounded-full hover:border-white transition shadow-lg">
@@ -252,7 +357,7 @@
         </section>
 
         <!-- SECÇÃO DE VÍDEOS -->
-        <section id="videos" class="py-24 sm:py-32 px-4 sm:px-6 bg-[#0a0a0a]">
+        <section id="videos" class="reveal py-24 sm:py-32 px-4 sm:px-6 bg-[#0a0a0a]">
             <div class="max-w-7xl mx-auto">
                 <div class="mb-14">
                     <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3">Destaque em Vídeo</p>
@@ -281,7 +386,7 @@
         </section>
 
         <!-- SERVIÇOS -->
-        <section id="servicos" class="py-24 sm:py-32 px-4 sm:px-6 bg-[#0a0a0a]">
+        <section id="servicos" class="reveal py-24 sm:py-32 px-4 sm:px-6 bg-[#0a0a0a]">
             <div class="max-w-6xl mx-auto">
                 <div class="mb-16">
                     <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3">01 / O que fazemos</p>
@@ -305,42 +410,67 @@
         </section>
 
         <!-- PORTFÓLIO -->
-        <section id="projetos" class="py-24 sm:py-32 px-4 sm:px-6 bg-[#050505]">
+        <section id="projetos" class="reveal py-24 sm:py-32 px-4 sm:px-6 bg-[#050505]">
             <div class="max-w-7xl mx-auto">
                 <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase mb-3">02 / Portfólio</p>
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-16">Últimos Trabalhos.</h2>
                 
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-                    <div class="overflow-hidden rounded-xl group cursor-pointer aspect-square bg-[#111]">
-                        <img src="imagem.jpg" alt="Portfólio" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
-                    </div>
-                    <div class="overflow-hidden rounded-xl group cursor-pointer aspect-square bg-[#111]">
-                        <img src="imagem1.jpg" alt="Portfólio" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
-                    </div>
-                    <div class="overflow-hidden rounded-xl group cursor-pointer aspect-square bg-[#111]">
-                        <img src="imagem2.jpg" alt="Portfólio" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
-                    </div>
-                    <div class="overflow-hidden rounded-xl group cursor-pointer aspect-square bg-[#111]">
-                        <img src="imagem3.jpg" alt="Portfólio" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
-                    </div>
-                    <div class="overflow-hidden rounded-xl group cursor-pointer aspect-square bg-[#111]">
-                        <img src="imagem4.jpg" alt="Portfólio" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
-                    </div>
-                    <div class="overflow-hidden rounded-xl group cursor-pointer aspect-square bg-[#111]">
-                        <img src="menina.jpg" alt="Portfólio" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
-                    </div>
+                    <button type="button" class="portfolio-item relative block w-full overflow-hidden rounded-xl group aspect-square bg-[#111] text-left" aria-label="Ampliar imagem do portfólio">
+                        <img loading="lazy" decoding="async" src="imagem.jpg" alt="Trabalho de fotografia da JH Visual" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                    </button>
+                    <button type="button" class="portfolio-item relative block w-full overflow-hidden rounded-xl group aspect-square bg-[#111] text-left" aria-label="Ampliar imagem do portfólio">
+                        <img loading="lazy" decoding="async" src="imagem1.jpg" alt="Trabalho de fotografia da JH Visual" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                    </button>
+                    <button type="button" class="portfolio-item relative block w-full overflow-hidden rounded-xl group aspect-square bg-[#111] text-left" aria-label="Ampliar imagem do portfólio">
+                        <img loading="lazy" decoding="async" src="imagem2.jpg" alt="Trabalho de fotografia da JH Visual" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                    </button>
+                    <button type="button" class="portfolio-item relative block w-full overflow-hidden rounded-xl group aspect-square bg-[#111] text-left" aria-label="Ampliar imagem do portfólio">
+                        <img loading="lazy" decoding="async" src="imagem3.jpg" alt="Trabalho de fotografia da JH Visual" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                    </button>
+                    <button type="button" class="portfolio-item relative block w-full overflow-hidden rounded-xl group aspect-square bg-[#111] text-left" aria-label="Ampliar imagem do portfólio">
+                        <img loading="lazy" decoding="async" src="imagem4.jpg" alt="Trabalho de fotografia da JH Visual" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                    </button>
+                    <button type="button" class="portfolio-item relative block w-full overflow-hidden rounded-xl group aspect-square bg-[#111] text-left" aria-label="Ampliar imagem do portfólio">
+                        <img loading="lazy" decoding="async" src="menina.jpg" alt="Trabalho de fotografia da JH Visual" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                    </button>
                 </div>
 
                 <div class="mt-12 text-center">
-                    <a href="https://instagram.com/jhvisualrp" target="_blank" class="inline-block px-8 py-4 bg-transparent border border-gray-600 text-white text-sm sm:text-base font-semibold rounded-full hover:border-white transition">
+                    <a href="https://instagram.com/jhvisualrp" target="_blank" rel="noopener noreferrer" class="inline-block px-8 py-4 bg-transparent border border-gray-600 text-white text-sm sm:text-base font-semibold rounded-full hover:border-white transition">
                         Ver mais no Instagram
                     </a>
                 </div>
             </div>
         </section>
 
+
+        <!-- CHAMADA PARA ORÇAMENTO -->
+        <section class="reveal px-4 sm:px-6 py-20 sm:py-28 bg-[#050505]">
+            <div class="max-w-7xl mx-auto">
+                <div class="cta-panel premium-card rounded-3xl border border-white/10 px-7 py-12 sm:px-14 sm:py-16">
+                    <p class="section-kicker text-xs font-semibold uppercase mb-4">Seu próximo projeto começa aqui</p>
+                    <div class="grid lg:grid-cols-[1fr_auto] gap-8 items-end">
+                        <div>
+                            <h2 class="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight max-w-3xl">
+                                Sua marca merece ser vista de outro jeito.
+                            </h2>
+                            <p class="text-gray-400 mt-5 max-w-xl leading-relaxed">
+                                Conte um pouco sobre o que você precisa. Vamos conversar sobre fotografia, vídeos e conteúdo para o seu negócio.
+                            </p>
+                        </div>
+                        <a href="https://wa.me/5516982055971?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20JH%20Visual%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
+                           target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center justify-center gap-3 px-7 py-4 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition whitespace-nowrap">
+                            Vamos conversar <span aria-hidden="true">↗</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- CARROSSEL DE MARCAS -->
-        <section id="marcas" class="marquee-section">
+        <section id="marcas" class="marquee-section reveal">
             <div class="max-w-7xl mx-auto px-4 mb-4 text-center">
                 <p class="text-xs sm:text-sm font-semibold tracking-widest text-gray-500 uppercase">Marcas que já atendemos</p>
             </div>
@@ -381,7 +511,7 @@
     </main>
 
     <!-- RODAPÉ -->
-    <footer id="contato" class="bg-[#050505] py-16 px-4 sm:px-6 border-t border-gray-900">
+    <footer id="contato" class="reveal bg-[#050505] py-16 px-4 sm:px-6 border-t border-gray-900">
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <div>
                 <img src="logo.png" alt="JHVISUALRP Logo" class="h-16 sm:h-20 w-auto object-contain mb-6">
@@ -391,12 +521,12 @@
                 <h3 class="font-bold mb-4 text-white">Contato</h3>
                 <div class="flex flex-col gap-3 text-gray-400 text-sm sm:text-base">
                     <!-- Instagram -->
-                    <a href="https://instagram.com/jhvisualrp" target="_blank" class="flex items-center gap-3 hover:text-white transition">
+                    <a href="https://instagram.com/jhvisualrp" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 hover:text-white transition">
                         <svg class="w-5 h-5 text-gray-400 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                         <span>Instagram: @jhvisualrp</span>
                     </a>
                     <!-- WhatsApp -->
-                    <a href="https://wa.me/5516982055971" target="_blank" class="flex items-center gap-3 hover:text-white transition">
+                    <a href="https://wa.me/5516982055971" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 hover:text-white transition">
                         <svg class="w-5 h-5 text-gray-400 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                         <span>WhatsApp: (16) 98205-5971</span>
                     </a>
@@ -414,6 +544,21 @@
             </div>
         </div>
     </footer>
+
+
+    <!-- Visualizador de imagens do portfólio -->
+    <div id="image-lightbox" role="dialog" aria-modal="true" aria-label="Imagem ampliada do portfólio">
+        <button id="lightbox-close" type="button" aria-label="Fechar imagem">×</button>
+        <img id="lightbox-image" src="" alt="Imagem ampliada do portfólio">
+    </div>
+
+    <a class="whatsapp-float" href="https://wa.me/5516982055971?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20JH%20Visual."
+       target="_blank" rel="noopener noreferrer" aria-label="Fale com a JH Visual pelo WhatsApp">
+        <svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.52 3.48A11.8 11.8 0 0 0 12.1 0C5.57 0 .25 5.32.25 11.85c0 2.09.55 4.13 1.59 5.93L.15 24l6.38-1.67a11.8 11.8 0 0 0 5.56 1.41h.01c6.53 0 11.85-5.32 11.85-11.85 0-3.17-1.23-6.15-3.43-8.41ZM12.1 21.7h-.01a9.8 9.8 0 0 1-4.99-1.36l-.36-.21-3.79.99 1.01-3.7-.23-.38a9.82 9.82 0 1 1 8.37 4.66Zm5.39-7.35c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.95 1.18-.18.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.79-1.68-2.09-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.53.07-.8.38-.28.3-1.05 1.03-1.05 2.51s1.08 2.91 1.23 3.11c.15.2 2.12 3.23 5.14 4.53.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.08-.12-.28-.2-.58-.35Z"/>
+        </svg>
+        <span>Fale pelo WhatsApp</span>
+    </a>
 
     <!-- SCRIPT DE INTRO, MENU E BOTÕES DE VÍDEO -->
     <script>
@@ -472,12 +617,17 @@
 
         if (menuBtn && mobileMenu) {
             menuBtn.addEventListener('click', () => {
+                const isOpen = !mobileMenu.classList.contains('hidden');
                 mobileMenu.classList.toggle('hidden');
+                menuBtn.setAttribute('aria-expanded', String(!isOpen));
+                menuBtn.setAttribute('aria-label', isOpen ? 'Abrir menu' : 'Fechar menu');
             });
 
             mobileLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     mobileMenu.classList.add('hidden');
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                    menuBtn.setAttribute('aria-label', 'Abrir menu');
                 });
             });
         }
@@ -492,6 +642,56 @@
                 console.error("Erro Supabase:", erro);
             }
         });
+
+        // Revelar seções suavemente quando entram na tela.
+        const revealItems = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window) {
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            revealItems.forEach(item => revealObserver.observe(item));
+        } else {
+            revealItems.forEach(item => item.classList.add('is-visible'));
+        }
+
+        // Abrir e fechar fotos do portfólio em tela cheia.
+        const lightbox = document.getElementById('image-lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxClose = document.getElementById('lightbox-close');
+
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const image = item.querySelector('img');
+                if (!image || !lightbox || !lightboxImage) return;
+                lightboxImage.src = image.currentSrc || image.src;
+                lightboxImage.alt = image.alt || 'Imagem do portfólio JH Visual';
+                lightbox.classList.add('open');
+                document.body.style.overflow = 'hidden';
+                lightboxClose.focus();
+            });
+        });
+
+        function closeLightbox() {
+            if (!lightbox) return;
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+            if (lightboxImage) lightboxImage.src = '';
+        }
+        if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+        if (lightbox) {
+            lightbox.addEventListener('click', event => {
+                if (event.target === lightbox) closeLightbox();
+            });
+        }
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') closeLightbox();
+        });
+
     </script>
 </body>
 </html>
