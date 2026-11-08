@@ -631,6 +631,40 @@ body.intro-active{overflow:hidden!important}
 @media(max-width:800px){.service-strip{min-height:0}.service-strip>.wrap{width:calc(100% - 40px)}.service-strip .strip-grid{grid-template-columns:1fr;min-height:0;padding:5px 0;gap:0}.service-strip .strip-grid span,.service-strip .strip-grid span:first-child,.service-strip .strip-grid span:last-child{min-height:45px;padding:0 8px;justify-content:center;white-space:normal;font-size:9px}.service-strip .strip-grid span+span{border-top:1px solid rgba(226,211,195,.09)}}
 @media(prefers-reduced-motion:reduce){.service-strip *{transition:none!important}}
 </style>
+
+<style id="jh-mobile-film-carousel-2026">
+/* No celular, os filmes viram um carrossel horizontal com gesto de deslizar. */
+@media (max-width: 760px) {
+  #filmes .film-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-inline: -18px;
+    padding: 2px 18px 14px;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 18px;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #b99778 #292929;
+    touch-action: pan-x pan-y;
+  }
+  #filmes .film-card {
+    flex: 0 0 min(84%, 390px);
+    min-width: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+  #filmes .film-frame {
+    aspect-ratio: 16 / 10;
+  }
+}
+@media (max-width: 380px) {
+  #filmes .film-card { flex-basis: 88%; }
+}
+</style>
 </head>
 <body>
 <!-- JH Visual — full-screen audiovisual introduction -->
